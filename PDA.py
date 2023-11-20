@@ -53,9 +53,20 @@ class States():
 
 
 class Symbol():
+    '''
+    Symbol untuk strictly tells kalo hal itu adalah symbol.
+    tapi kalo pas bandingin sama string juga ok ok aja.
+
+    q = Symbol("q")
+    q == "q" 
+    '''
+
     __label: str
 
     def __init__(self, label: str) -> None:
+        if (not isinstance(label, str)):
+            raise Exception("Wrong type in Symbol.")
+
         self.__label = label
 
     def __eq__(self, other) -> bool:
@@ -69,8 +80,40 @@ class Symbol():
 
 
 class TransitionFunction():
-    def __init__(self):
-        pass
+
+    '''
+    delta(0, A, AA) translates to TransitionFunction(0, "A", ["A", "A"])
+    '''
+
+    input_symbol: str | Symbol
+    top_before: str | Symbol
+    top_after: List[str | Symbol]
+
+    def __init__(self, symbol: str | Symbol, topBefore: str | Symbol, topAfter: List[str | Symbol]):
+
+        self._checker(symbol, topBefore, topAfter)
+
+        self.input_symbol = symbol
+        self.top_before = topBefore
+        self.top_after = topAfter
+
+    def _checker(symbol, top_before, top_after):
+
+        strict_symbol_check = isinstance(
+            symbol, str) or isinstance(symbol, Symbol)
+        strict_top_before_check = isinstance(
+            symbol, str) or isinstance(symbol, Symbol)
+        if (not strict_symbol_check or not strict_top_before_check):
+            raise Exception("Wrong type.")
+
+        strict_top_after_check = isinstance(symbol, list)
+        if (not strict_top_after_check):
+            raise Exception("Wrong type.")
+
+        length = len(strict_top_after_check)
+        for i in range(length):
+            if not isinstance(strict_top_after_check[i], str) or not isinstance(strict_top_after_check[i], Symbol):
+                raise Exception("Wrong type in transition function.")
 
 
 class PDA():
