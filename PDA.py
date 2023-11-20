@@ -74,15 +74,15 @@ class TransitionFunction():
 
 
 class PDA():
-    __Q: State
-    __stack: Stack
-    __sigma: List[str]
-    __delta: List[TransitionFunction]
-    __start: State
-    __startsymbol: str
-    __finalstates: States
-    __filename: str
+    _Q: State
+    _stack: Stack
+    _sigma: List[str]
+    _delta: List[TransitionFunction]
+    _start: State
+    _startsymbol: str
+    _finalstates: States
+    _filename: str
 
     def __init__(self, PDAFile):
-        self.__filename = PDAFile
-        self.__stack = Stack()
+        self._filename = PDAFile
+        self._stack = Stack()

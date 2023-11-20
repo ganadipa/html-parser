@@ -9,7 +9,10 @@ class HTMLParser(PDA):
     rest properties is at PDA class. @see PDA.py
     '''
 
-    def __init__(self):
+    def __init__(self, pda_file):
+        super().__init__(pda_file)
+        # Now, PDA is ready to use.
+
         self.__errors = list()
         self.__errors.append(
             {
@@ -18,14 +21,11 @@ class HTMLParser(PDA):
             }
         )
 
-    def check(self, html_file, pda_file):
+    def check(self, html_file):
         start = time.time()
 
-        super().__init__(pda_file)
-        # Now, PDA is ready to use.
-
         print(
-            f"Checking the HTML inside {html_file}, given the PDA from {pda_file}...\n")
+            f"Checking the HTML inside {html_file}\n")
 
         # Use additional function to maintain code readability
         self.__check_helper(html_file)
@@ -37,7 +37,7 @@ class HTMLParser(PDA):
             self.print_errors()
 
         duration = time.time() - start
-        print(f"\nFinished in {duration} seconds.")
+        print(f"\nFinished in {duration} seconds.\n")
 
     def print_errors(self):
         err_length = len(self.__errors)
@@ -63,9 +63,9 @@ if __name__ == '__main__':
     pda_file = sys.argv[1]
     html_file = sys.argv[2]
 
-    parser1 = HTMLParser()
-    parser2 = HTMLParser()
-    parser1.check(html_file, pda_file)
-    parser2.check(html_file, pda_file + "2")
-    print(parser1._PDA__filename)
-    print(parser2._PDA__filename)
+    parser1 = HTMLParser(pda_file + "2")
+    parser2 = HTMLParser(pda_file)
+    parser1.check(html_file)
+    parser2.check(html_file)
+    print(parser1._filename)
+    print(parser2._filename)
