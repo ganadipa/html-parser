@@ -81,7 +81,8 @@ class PDA():
     __start: State
     __startsymbol: str
     __finalstates: States
+    __filename: str
 
     def __init__(self, PDAFile):
-
+        self.__filename = PDAFile
         self.__stack = Stack()
