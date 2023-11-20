@@ -15,11 +15,10 @@ class HTMLParser(PDA):
         )
 
     def check(self, html_file, pda_file):
-        errors = list()
         print(
             f"Checking the HTML inside {html_file} given the PDA from {pda_file}...")
 
-        if len(errors) > 0:
+        if len(self.__errors) > 0:
             print("Passed!")
         else:
             self.print_errors()
