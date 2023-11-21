@@ -5,21 +5,14 @@ def stringToListOfTag(string: str) -> List[str]:
     # I.S Pokonya stringnya ga boleh ngaco.
 
     # Contoh input
-    # <hello> -> ["hello"]
+    # <hello> -> ["<hello>"]
     # <hello><world> -> ["<hello>", "<world>"]
 
-    result = list()
-
     tags = string.split("><")
-    for i in range(len(tags)):
-        if (i == 0):
-            tags[i] = tags[i] + '>'
-            continue
-        if (i == len(tags) - 1):
-            tags[i] = '<' + tags[i]
-            continue
-
-        tags[i] = '<' + tags[i] + '>'
+    for i in range(len(tags)) :
+        tags[i] = tags[i].replace("<", "")
+        tags[i] = tags[i].replace(">", "")
+        tags[i] = "<" + tags[i] + ">"
 
     return tags
 
@@ -31,6 +24,8 @@ class Stack():
         self.__elements = list()
 
     def top(self) -> any:
+        if (self.is_empty()) :
+            return "<e>"
         return self.__elements[-1]
 
     def push(self, value: any):
@@ -45,6 +40,9 @@ class Stack():
 
     def height(self) -> int:
         return len(self.__elements)
+    
+    def is_empty(self) -> bool:
+        return len(self.__elements) == 0
 
     def __str__(self) -> None:
         for i in range(self.height()):
@@ -52,6 +50,12 @@ class Stack():
 
     def __len__(self) -> int:
         return self.height()
+    
+    def __eq__(self, stock) -> bool:
+        if (len(self) != len(stock)) :
+            return False
+        else :
+            return self.__elements == stock.__elements
 
 
 class TransitionFunction():
@@ -87,61 +91,104 @@ class TransitionFunction():
 
     def __str__(self):
         return f"delta({self.state_before}, {self.input_symbol}, {self.top_before}) = ({self.state_after}, {self.top_after})"
+    
+class PDAstate():
+    state: str
+    stack: Stack
 
+    def __init__(self, state, stack_top):
+        self.state = state
+        self.stack = Stack()
+        self.stack.push(stack_top)
+
+    def copy_self(self):
+        newPDAState = PDAstate(self.state, "<>")
+        newStack = Stack()
+        
+        for i in range(len(self.stack)) :
+            newStack.push(self.stack.info(i))
+
+        newPDAState.stack = newStack
+        return newPDAState
+
+    def transition(self, input_symbol, transition_function):
+        if (
+            transition_function.input_symbol == input_symbol and
+            transition_function.state_before == self.state and
+            transition_function.top_before == self.stack.top()
+            ) :
+            result = self.copy_self()
+            result.state = transition_function.state_after
+
+            result.stack.pop()
+            for i in transition_function.top_after[::-1] :
+                if (i != "<e>") :
+                    result.stack.push(i)
+            return result
+        return False
+    
+    def __eq__(self, friend) :
+        if (self.state != friend.state) :
+            return False
+        if (self.stack != friend.stack) :
+            return False
+        return True
 
 class PDA():
     Q: List[str]
     stack: Stack
-    sigma: List[str]  # input symbols
+    alphabet: List[str]  # input symbols
     delta: List[TransitionFunction]  # transition functions
-    start: str
+    start_state: str
     stack_symbols: List[str]
     start_symbol: str  # Initial stack symbol
-    finalstates: List[str]
-    byemptystack: bool
+    final_states: List[str]
+    by_empty_stack: bool
     filename: str
+
+    current_states: List[PDAstate]
 
     def __init__(self, PDAFile):
         self.filename = PDAFile
         self.stack = Stack()
         self.delta = list()
         self.Q = list()
-        self.sigma = list()
+        self.alphabet = list()
         self.stack_symbols = list()
-        self.finalstates = list()
+        self.final_states = list()
 
         with open(PDAFile, "r") as f:
 
-            states_line = f.readline()[:-1]
+            states_line = f.readline().strip()
 
             states = states_line.split(" ")
             for state in states:
                 self.add_state(state)
 
-            input_symbols_line = f.readline()[:-1]
+            input_symbols_line = f.readline().strip()
             i_symbols = input_symbols_line.split(" ")
             for symbol in i_symbols:
-                self.add_sigma(symbol)
+                self.add_alphabet(symbol)
 
-            stack_symbols_line = f.readline()[:-1]
+            stack_symbols_line = f.readline().strip()
             s_symbols = stack_symbols_line.split(" ")
             for symbol in s_symbols:
                 self.add_stack_symbols(symbol)
 
-            self.start = f.readline()[:-1]
+            self.start_state = f.readline().strip()
 
-            self.startsymbol = f.readline()[:-1]
+            self.start_symbol = f.readline().strip()
 
-            final_states_line = f.readline()[:-1]
+            final_states_line = f.readline().strip()
             f_states = final_states_line.split(" ")
             for state in f_states:
                 self.add_final_states(state)
 
-            self.byemptystack = f.readline()[:-1] == "E"
+            self.by_empty_stack = f.readline().strip() == "E"
 
             #
             # Rest is entries of transition functions
-            transition_function_line = f.readline()[:-1]
+            transition_function_line = f.readline().strip()
             while transition_function_line != "":
                 t_function = transition_function_line.split(" ")
 
@@ -156,13 +203,15 @@ class PDA():
 
                 self.add_delta(d)
 
-                transition_function_line = f.readline()[:-1]
+                transition_function_line = f.readline().strip()
+
+        self.current_states = [PDAstate(self.start_state, self.start_symbol)]
 
     def add_state(self, state: str):
         self.Q.append(state)
 
-    def add_sigma(self, symbol: str):
-        self.sigma.append(symbol)
+    def add_alphabet(self, symbol: str):
+        self.alphabet.append(symbol)
 
     def add_delta(self, tf: TransitionFunction):
         self.delta.append(tf)
@@ -171,7 +220,7 @@ class PDA():
         self.stack_symbols.append(symb)
 
     def add_final_states(self, state: str):
-        self.finalstates.append(state)
+        self.final_states.append(state)
 
     def print_delta(self):
         for i in range(len(self.delta)):
@@ -187,3 +236,55 @@ class PDA():
 
     def pop_stack(self):
         return self.stack.pop()
+    
+    def get_symbol(self, symbol):
+        next_states = list()
+        for state in self.current_states :
+            for transition_function in self.delta :
+                if (state.transition(symbol, transition_function)) :
+                    next_states.append(state.transition(symbol, transition_function))
+        if (symbol == "e") :
+            for state in next_states :
+                if (state not in self.current_states) :
+                    self.current_states.append(state)
+        else :
+            self.current_states = next_states
+
+    def is_accepted(self):
+        if self.by_empty_stack :
+            for state in self.current_states :
+                if (state.stack.is_empty()) :
+                    return True
+            return False
+        else :
+            for state in self.current_states :
+                if (state.state in self.final_states) :
+                    return True
+            return False
+        
+    def epsilon_exploration(self) :
+        epsilon_try = True
+        while(epsilon_try and len(self.current_states) != 0) :
+            last_state = self.current_states
+            self.get_symbol("e")
+            if (len(last_state) != len(self.current_states)) :
+                pass
+            else :
+                for i in range(len(last_state)) :
+                    epsilon_try = False
+                    if (not (last_state[i] == self.current_states[i])) :
+                        epsilon_try = True
+        
+    def is_tape_accepted(self, tape):
+        self.epsilon_exploration()
+        for symbol in tape :
+            self.get_symbol(symbol)
+            self.epsilon_exploration()
+        return self.is_accepted()
+    
+pathPDA = "config.txt"
+tape = "0101101010"
+tape = tape + tape[::-1] + "1"
+print(tape)
+gana = PDA(pathPDA)
+print(gana.is_tape_accepted(tape))
