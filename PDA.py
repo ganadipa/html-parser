@@ -9,7 +9,7 @@ def stringToListOfTag(string: str) -> List[str]:
     # <hello><world> -> ["<hello>", "<world>"]
 
     tags = string.split("><")
-    for i in range(len(tags)) :
+    for i in range(len(tags)):
         tags[i] = tags[i].replace("<", "")
         tags[i] = tags[i].replace(">", "")
         tags[i] = "<" + tags[i] + ">"
@@ -24,7 +24,7 @@ class Stack():
         self.__elements = list()
 
     def top(self) -> any:
-        if (self.is_empty()) :
+        if (self.is_empty()):
             return "<e>"
         return self.__elements[-1]
 
@@ -40,7 +40,7 @@ class Stack():
 
     def height(self) -> int:
         return len(self.__elements)
-    
+
     def is_empty(self) -> bool:
         return len(self.__elements) == 0
 
@@ -50,11 +50,11 @@ class Stack():
 
     def __len__(self) -> int:
         return self.height()
-    
+
     def __eq__(self, stock) -> bool:
-        if (len(self) != len(stock)) :
+        if (len(self) != len(stock)):
             return False
-        else :
+        else:
             return self.__elements == stock.__elements
 
 
@@ -91,7 +91,8 @@ class TransitionFunction():
 
     def __str__(self):
         return f"delta({self.state_before}, {self.input_symbol}, {self.top_before}) = ({self.state_after}, {self.top_after})"
-    
+
+
 class PDAstate():
     state: str
     stack: Stack
@@ -104,8 +105,8 @@ class PDAstate():
     def copy_self(self):
         newPDAState = PDAstate(self.state, "<>")
         newStack = Stack()
-        
-        for i in range(len(self.stack)) :
+
+        for i in range(len(self.stack)):
             newStack.push(self.stack.info(i))
 
         newPDAState.stack = newStack
@@ -116,23 +117,24 @@ class PDAstate():
             transition_function.input_symbol == input_symbol and
             transition_function.state_before == self.state and
             transition_function.top_before == self.stack.top()
-            ) :
+        ):
             result = self.copy_self()
             result.state = transition_function.state_after
 
             result.stack.pop()
-            for i in transition_function.top_after[::-1] :
-                if (i != "<e>") :
+            for i in transition_function.top_after[::-1]:
+                if (i != "<e>"):
                     result.stack.push(i)
             return result
         return False
-    
-    def __eq__(self, friend) :
-        if (self.state != friend.state) :
+
+    def __eq__(self, friend):
+        if (self.state != friend.state):
             return False
-        if (self.stack != friend.stack) :
+        if (self.stack != friend.stack):
             return False
         return True
+
 
 class PDA():
     Q: List[str]
@@ -236,55 +238,57 @@ class PDA():
 
     def pop_stack(self):
         return self.stack.pop()
-    
+
     def get_symbol(self, symbol):
         next_states = list()
-        for state in self.current_states :
-            for transition_function in self.delta :
-                if (state.transition(symbol, transition_function)) :
-                    next_states.append(state.transition(symbol, transition_function))
-        if (symbol == "e") :
-            for state in next_states :
-                if (state not in self.current_states) :
+        for state in self.current_states:
+            for transition_function in self.delta:
+                if (state.transition(symbol, transition_function)):
+                    next_states.append(state.transition(
+                        symbol, transition_function))
+        if (symbol == "e"):
+            for state in next_states:
+                if (state not in self.current_states):
                     self.current_states.append(state)
-        else :
+        else:
             self.current_states = next_states
 
     def is_accepted(self):
-        if self.by_empty_stack :
-            for state in self.current_states :
-                if (state.stack.is_empty()) :
+        if self.by_empty_stack:
+            for state in self.current_states:
+                if (state.stack.is_empty()):
                     return True
             return False
-        else :
-            for state in self.current_states :
-                if (state.state in self.final_states) :
+        else:
+            for state in self.current_states:
+                if (state.state in self.final_states):
                     return True
             return False
-        
-    def epsilon_exploration(self) :
+
+    def epsilon_exploration(self):
         epsilon_try = True
-        while(epsilon_try and len(self.current_states) != 0) :
+        while (epsilon_try and len(self.current_states) != 0):
             last_state = self.current_states
             self.get_symbol("e")
-            if (len(last_state) != len(self.current_states)) :
+            if (len(last_state) != len(self.current_states)):
                 pass
-            else :
-                for i in range(len(last_state)) :
+            else:
+                for i in range(len(last_state)):
                     epsilon_try = False
-                    if (not (last_state[i] == self.current_states[i])) :
+                    if (not (last_state[i] == self.current_states[i])):
                         epsilon_try = True
-        
+
     def is_tape_accepted(self, tape):
         self.epsilon_exploration()
-        for symbol in tape :
+        for symbol in tape:
             self.get_symbol(symbol)
             self.epsilon_exploration()
         return self.is_accepted()
-    
-pathPDA = "config.txt"
-tape = "0101101010"
-tape = tape + tape[::-1] + "1"
-print(tape)
-gana = PDA(pathPDA)
-print(gana.is_tape_accepted(tape))
+
+
+# pathPDA = "config.txt"
+# tape = "0101101010"
+# tape = tape + tape[::-1] + "1"
+# print(tape)
+# gana = PDA(pathPDA)
+# print(gana.is_tape_accepted(tape))

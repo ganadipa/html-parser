@@ -1,1 +1,1 @@
-python main.py pda.txt "inputAcc.html"
+python main.py pda.txt "ezone.html"
