@@ -113,8 +113,12 @@ class PDAstate():
         return newPDAState
 
     def transition(self, input_symbol, transition_function):
+        i_symbol_check = (transition_function.input_symbol == '%'
+                          and input_symbol != '<' and input_symbol != '<' and input_symbol != '/')
+        is_symbol_match = (transition_function.input_symbol ==
+                           input_symbol) or (i_symbol_check)
         if (
-            transition_function.input_symbol == input_symbol and
+            is_symbol_match and
             transition_function.state_before == self.state and
             transition_function.top_before == self.stack.top()
         ):
@@ -190,8 +194,12 @@ class PDA():
 
             #
             # Rest is entries of transition functions
-            transition_function_line = f.readline().strip()
+            transition_function_line = f.readline()
             while transition_function_line != "":
+                if (transition_function_line == '\n'):
+                    transition_function_line = f.readline()
+                    continue
+                transition_function_line = transition_function_line.strip()
                 t_function = transition_function_line.split(" ")
 
                 bef_state = t_function[0]
@@ -205,7 +213,7 @@ class PDA():
 
                 self.add_delta(d)
 
-                transition_function_line = f.readline().strip()
+                transition_function_line = f.readline()
 
         self.current_states = [PDAstate(self.start_state, self.start_symbol)]
 
@@ -240,13 +248,14 @@ class PDA():
         return self.stack.pop()
 
     def get_symbol(self, symbol):
+
         next_states = list()
         for state in self.current_states:
             for transition_function in self.delta:
                 if (state.transition(symbol, transition_function)):
                     next_states.append(state.transition(
                         symbol, transition_function))
-        if (symbol == "e"):
+        if (symbol == "eps"):
             for state in next_states:
                 if (state not in self.current_states):
                     self.current_states.append(state)
@@ -269,9 +278,9 @@ class PDA():
         epsilon_try = True
         while (epsilon_try and len(self.current_states) != 0):
             last_state = []
-            for state in self.current_states :
+            for state in self.current_states:
                 last_state.append(state.copy_self())
-            self.get_symbol("e")
+            self.get_symbol("eps")
             if (len(last_state) != len(self.current_states)):
                 pass
             else:

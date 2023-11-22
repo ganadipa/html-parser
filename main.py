@@ -64,6 +64,7 @@ class HTMLParser(PDA):
         prev = self._current_char
 
         while (self._current_char != ""):
+
             if (self._current_char == "<"):
                 self.__next()
 
@@ -85,7 +86,7 @@ class HTMLParser(PDA):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
                     self.__next()
-            
+
             self.__ignore_blanks()
 
         self.file.close()
@@ -214,5 +215,6 @@ if __name__ == '__main__':
     html_file = "test/ezone.html"
 
     parser2 = HTMLParser(pda_file)
+    # parser2.print_delta()
     parser2.check(html_file)
     print(parser2.filename)

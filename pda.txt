@@ -1,4 +1,4 @@
-START HTML OUTSIDE CHTML
+START HTML INSIDEBODY CHTML UHTML LHTML INSIDEHEAD
 lb rb / html
 <Z> <html>
 START
@@ -7,34 +7,47 @@ GANA
 E
 START lb <Z> START <lb><Z>
 START html <lb> HTML <lb>
-HTML rb <lb> OUTSIDE <html>
-OUTSIDE a <html> OUTSIDE <html>
-OUTSIDE b <html> OUTSIDE <html>
-OUTSIDE c <html> OUTSIDE <html>
-OUTSIDE d <html> OUTSIDE <html>
-OUTSIDE f <html> OUTSIDE <html>
-OUTSIDE g <html> OUTSIDE <html>
-OUTSIDE h <html> OUTSIDE <html>
-OUTSIDE i <html> OUTSIDE <html>
-OUTSIDE j <html> OUTSIDE <html>
-OUTSIDE k <html> OUTSIDE <html>
-OUTSIDE l <html> OUTSIDE <html>
-OUTSIDE m <html> OUTSIDE <html>
-OUTSIDE n <html> OUTSIDE <html>
-OUTSIDE o <html> OUTSIDE <html>
-OUTSIDE p <html> OUTSIDE <html>
-OUTSIDE q <html> OUTSIDE <html>
-OUTSIDE r <html> OUTSIDE <html>
-OUTSIDE s <html> OUTSIDE <html>
-OUTSIDE t <html> OUTSIDE <html>
-OUTSIDE u <html> OUTSIDE <html>
-OUTSIDE v <html> OUTSIDE <html>
-OUTSIDE w <html> OUTSIDE <html>
-OUTSIDE x <html> OUTSIDE <html>
-OUTSIDE y <html> OUTSIDE <html>
-OUTSIDE z <html> OUTSIDE <html>
-OUTSIDE lb <html> OUTSIDE <lb><html>
-OUTSIDE /html <lb> CHTML <lb>
+HTML rb <lb> UHTML <html>
+
+UHTML lb <html> UHTML <lb><html>
+UHTML head <lb> HEAD <lb>
+HEAD rb <lb> INSIDEHEAD <head>
+INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
+INSIDEHEAD /head <lb> CHEAD <lb>
+CHEAD rb <lb> CHEAD <e>
+CHEAD eps <head> LHTML <e>
+
+
+
+
+LHTML lb <html> LHTML <lb><html>
+LHTML body <lb> BODY <lb>
+BODY rb <lb> INSIDEBODY <body>
+INSIDEBODY lb <body> INSIDEBODY <lb><body>
+INSIDEBODY /body <lb> CBODY <lb>
+CBODY rb <lb> CBODY <e>
+CBODY eps <body> FHTML <e>
+
+
+INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
+INSIDEHEAD title <lb> TITLE <lb>
+TITLE rb <lb> INSIDETITLE <title>
+INSIDETITLE % <title> INSIDETITLE <title>
+INSIDETITLE lb <title> INSIDETITLE <lb><title>
+INSIDETITLE /title <lb> CTITLE <lb>
+CTITLE rb <lb> CTITLE <e>
+CTITLE eps <title> INSIDEHEAD <e>
+
+
+
+
+
+
+
+INSIDEBODY % <body> INSIDEBODY <body>
+
+FHTML lb <html> FHTML <lb><html>
+FHTML /html <lb> CHTML <lb>
 CHTML rb <lb> CHTML <e>
-CHTML e <html> CHTML <e>
-CHTML e <Z> CHTML <e>
+CHTML eps <html> CHTML <e>
+CHTML eps <Z> CHTML <e>
