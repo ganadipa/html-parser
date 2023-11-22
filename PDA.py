@@ -268,7 +268,9 @@ class PDA():
     def epsilon_exploration(self):
         epsilon_try = True
         while (epsilon_try and len(self.current_states) != 0):
-            last_state = self.current_states
+            last_state = []
+            for state in self.current_states :
+                last_state.append(state.copy_self())
             self.get_symbol("e")
             if (len(last_state) != len(self.current_states)):
                 pass

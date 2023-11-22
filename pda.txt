@@ -1,14 +1,40 @@
-Q P F # total states
-a # input word symbols
-Z Y # stack symbols
-Q # starting state
-Z # starting stack
-F # accepting states
-F # E - accepts with empty stack or F - accepts with accepting state
-Q a Z Q YZ # list of productions (current state, read from word, take from stack, next state, add to stack)
-Q a Y Q YY
-Q e Z P Z
-Q e Y P Y 
-P a Z P e 
-P a Y P e
-P e Z F e
+START HTML OUTSIDE CHTML
+lb rb / html
+<Z> <html>
+START
+<Z>
+GANA
+E
+START lb <Z> START <lb><Z>
+START html <lb> HTML <lb>
+HTML rb <lb> OUTSIDE <html>
+OUTSIDE a <html> OUTSIDE <html>
+OUTSIDE b <html> OUTSIDE <html>
+OUTSIDE c <html> OUTSIDE <html>
+OUTSIDE d <html> OUTSIDE <html>
+OUTSIDE f <html> OUTSIDE <html>
+OUTSIDE g <html> OUTSIDE <html>
+OUTSIDE h <html> OUTSIDE <html>
+OUTSIDE i <html> OUTSIDE <html>
+OUTSIDE j <html> OUTSIDE <html>
+OUTSIDE k <html> OUTSIDE <html>
+OUTSIDE l <html> OUTSIDE <html>
+OUTSIDE m <html> OUTSIDE <html>
+OUTSIDE n <html> OUTSIDE <html>
+OUTSIDE o <html> OUTSIDE <html>
+OUTSIDE p <html> OUTSIDE <html>
+OUTSIDE q <html> OUTSIDE <html>
+OUTSIDE r <html> OUTSIDE <html>
+OUTSIDE s <html> OUTSIDE <html>
+OUTSIDE t <html> OUTSIDE <html>
+OUTSIDE u <html> OUTSIDE <html>
+OUTSIDE v <html> OUTSIDE <html>
+OUTSIDE w <html> OUTSIDE <html>
+OUTSIDE x <html> OUTSIDE <html>
+OUTSIDE y <html> OUTSIDE <html>
+OUTSIDE z <html> OUTSIDE <html>
+OUTSIDE lb <html> OUTSIDE <lb><html>
+OUTSIDE /html <lb> CHTML <lb>
+CHTML rb <lb> CHTML <e>
+CHTML e <html> CHTML <e>
+CHTML e <Z> CHTML <e>

@@ -18,12 +18,6 @@ class HTMLParser(PDA):
         # Now, PDA is ready to use.
 
         self.__errors = list()
-        self.__errors.append(
-            {
-                "line": 36,
-                "error_message": "Can't help falling in love with you."
-            }
-        )
 
     def check(self, html_file):
         start = time.time()
@@ -35,7 +29,7 @@ class HTMLParser(PDA):
         self.__check_helper(html_file)
 
         # Now self.__errors is filled. We check whether there is some errors or not
-        if len(self.__errors) == 0:
+        if self.is_accepted():
             print("Passed!")
         else:
             self.print_errors()
@@ -65,7 +59,34 @@ class HTMLParser(PDA):
         self._current_line = 1
 
         self.__next()
-        self.__next()
+        self.__ignore_blanks()
+
+        prev = self._current_char
+
+        while (self._current_char != ""):
+            if (self._current_char == "<"):
+                self.__next()
+
+                self.get_symbol("lb")
+                self.epsilon_exploration()
+                prev = "lb"
+            elif (self._current_char == ">"):
+                self.get_symbol("rb")
+                self.epsilon_exploration()
+                self.__next()
+                prev = "rb"
+            else:
+                if (prev == 'lb'):
+                    label_tag = self.read_label_tag()
+                    self.get_symbol(label_tag)
+                    self.epsilon_exploration()
+                    prev = "labeltag"
+                else:
+                    self.get_symbol(self._current_char)
+                    self.epsilon_exploration()
+                    self.__next()
+            
+            self.__ignore_blanks()
 
         self.file.close()
 
@@ -189,8 +210,8 @@ class HTMLParser(PDA):
 
 
 if __name__ == '__main__':
-    pda_file = sys.argv[1]
-    html_file = "test/"+sys.argv[2]
+    pda_file = "pda.txt"
+    html_file = "test/ezone.html"
 
     parser2 = HTMLParser(pda_file)
     parser2.check(html_file)
