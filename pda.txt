@@ -1,4 +1,4 @@
-START HTML INSIDEBODY CHTML UHTML LHTML INSIDEHEAD
+START HTML INSIDEBODY CHTML UHTML LHTML INSIDEHEAD INSIDEH1
 lb rb / html
 <Z> <html>
 START
@@ -29,7 +29,9 @@ CBODY rb <lb> CBODY <e>
 CBODY eps <body> FHTML <e>
 
 
-INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
+
+
+
 INSIDEHEAD title <lb> TITLE <lb>
 TITLE rb <lb> INSIDETITLE <title>
 INSIDETITLE % <title> INSIDETITLE <title>
@@ -45,6 +47,15 @@ CTITLE eps <title> INSIDEHEAD <e>
 
 
 INSIDEBODY % <body> INSIDEBODY <body>
+
+
+INSIDEBODY h1 <lb> H1 <lb>
+H1 rb <lb> INSIDEH1 <h1>
+INSIDEH1 lb <h1> INSIDEH1 <lb><h1>
+INSIDEH1 /h1 <lb> CH1 <lb>
+CH1 rb <lb> CH1 <e>
+CH1 eps <h1> INSIDEBODY <e>
+
 
 FHTML lb <html> FHTML <lb><html>
 FHTML /html <lb> CHTML <lb>

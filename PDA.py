@@ -114,7 +114,7 @@ class PDAstate():
 
     def transition(self, input_symbol, transition_function):
         i_symbol_check = (transition_function.input_symbol == '%'
-                          and input_symbol != '<' and input_symbol != '<' and input_symbol != '/')
+                          and input_symbol != 'lb' and input_symbol != 'rb' and input_symbol != '/')
         is_symbol_match = (transition_function.input_symbol ==
                            input_symbol) or (i_symbol_check)
         if (

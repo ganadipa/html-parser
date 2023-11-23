@@ -116,7 +116,7 @@ class HTMLParser(PDA):
                 self._current_char is not None):
             result += self._current_char
             self.__next()
-
+        print(result)
         return result
 
     def __ignore_blanks(self):
@@ -212,9 +212,9 @@ class HTMLParser(PDA):
 
 if __name__ == '__main__':
     pda_file = "pda.txt"
-    html_file = "test/ezone.html"
+    html_file = "test/coba.html"
 
     parser2 = HTMLParser(pda_file)
-    # parser2.print_delta()
+    parser2.print_delta()
     parser2.check(html_file)
     print(parser2.filename)
