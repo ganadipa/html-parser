@@ -199,6 +199,13 @@ class PDA():
                 if (transition_function_line == '\n'):
                     transition_function_line = f.readline()
                     continue
+                transition_function_line = transition_function_line.split("#")[
+                    0]
+
+                if len(transition_function_line) <= 8:
+                    transition_function_line = f.readline()
+                    continue
+
                 transition_function_line = transition_function_line.strip()
                 t_function = transition_function_line.split(" ")
 

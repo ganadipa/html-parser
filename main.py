@@ -65,12 +65,16 @@ class HTMLParser(PDA):
 
         while (self._current_char != ""):
 
+            if (len(self.current_states) == 0):
+                break
+
             if (self._current_char == "<"):
                 self.__next()
 
                 self.get_symbol("lb")
                 self.epsilon_exploration()
                 prev = "lb"
+                continue
             elif (self._current_char == ">"):
                 self.get_symbol("rb")
                 self.epsilon_exploration()
@@ -82,6 +86,21 @@ class HTMLParser(PDA):
                     self.get_symbol(label_tag)
                     self.epsilon_exploration()
                     prev = "labeltag"
+                elif (prev == 'labeltag' or prev == 'endquote'):
+                    attr = self.read_attr()
+                    self.get_symbol(attr)
+                    self.epsilon_exploration()
+                    prev = "attr"
+                elif (prev == "attr" and (self._current_char == "'" or self._current_char == '"')):
+                    self.get_symbol(self._current_char)
+                    self.epsilon_exploration()
+                    self.__next()
+                    prev = "openquote"
+                elif (prev == "openquote" and (self._current_char == "'" or self._current_char == '"')):
+                    self.get_symbol(self._current_char)
+                    self.epsilon_exploration()
+                    self.__next()
+                    prev = "endquote"
                 else:
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
@@ -116,7 +135,7 @@ class HTMLParser(PDA):
                 self._current_char is not None):
             result += self._current_char
             self.__next()
-        print(result)
+
         return result
 
     def __ignore_blanks(self):
@@ -129,11 +148,6 @@ class HTMLParser(PDA):
     def read_double_quote(self):
         # return None kalo double quote ga ditutup
         double_quote_starts_line = self._current_line
-        self.__next()
-
-        if self._current_char == '\"':
-            return ""
-
         val = ""
 
         while (self._current_char != '\"' and
@@ -152,12 +166,7 @@ class HTMLParser(PDA):
 
     def read_attr(self):
         # I.S. Sudah melewati '<', belum melewati '>'
-        # F.S. membaca satu kata paling awal setelah tag beserta isinya.
-        # pita menunjuk ke character setelahnya, bisa " ", bisa ">", bisa "\n" atau bisa None (eof)
-
-        # Contoh keluaran
-        # img="hello world" -> ["img", "hello world"]
-        # else, return None
+        # F.S. kalo valid di '=', kalo ga valid yagitu.
         self.__ignore_blanks()
 
         if self._current_char == "=":
@@ -184,27 +193,8 @@ class HTMLParser(PDA):
             self.__next()
 
         self.__ignore_blanks()
-        if (self._current_char != "="):
-            self.__errors.append({
-                "line": self._current_line,
-                "error_message": f"This attribute has no value: {curr_attr}"
-            })
-            return None
 
-        self.__ignore_blanks()
-        self.__next()
-        if (self._current_char != "\""):
-            self.__errors.append({
-                "line": self._current_line,
-                "error_message": f"Expected a value for attribute '{curr_attr}', but found something else."
-            })
-            return None
-
-        val = self.read_double_quote()
-        if val is None:
-            return None
-
-        return [curr_attr, val]
+        return curr_attr
 
     def __next(self):
         self._current_char = self.file.read(1)
@@ -212,9 +202,9 @@ class HTMLParser(PDA):
 
 if __name__ == '__main__':
     pda_file = "pda.txt"
-    html_file = "test/coba.html"
+    html_file = "test/ezone.html"
 
     parser2 = HTMLParser(pda_file)
-    parser2.print_delta()
+    # parser2.print_delta()
     parser2.check(html_file)
     print(parser2.filename)
