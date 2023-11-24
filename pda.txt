@@ -367,6 +367,7 @@ INSIDETABLE lb <table> INSIDETABLE <lb><table>
 INSIDETABLE /table <lb> CTABLE <lb>
 CTABLE rb <lb> CTABLE <e>
 CTABLE eps <table> INSIDEBODY <e>
+
 # link Tag
 # LINKMISS = MISSING REL
 INSIDEBODY link <lb> LINKMISSBODY <lb>
@@ -464,13 +465,26 @@ INSIDEBODY input <lb> INPUT <lb>
 INPUT id <lb> INPUT <attr><lb>
 INPUT class <lb> INPUT <attr><lb>
 INPUT style <lb> INPUT <attr><lb>
-INPUT type <lb> INPUT <type><lb>
-INPUT = <type> INPUT <=type>
+INPUT type <lb> INPUTTYPE <attr><lb>
+INPUT = <attr> INPUT <=>
+INPUTTYPE = <attr> INPUTTYPE <=>
 INPUT " <=> INPUT <">
-INPUT % <"> INPUT <">
+INPUTTYPE " <=> INPUTTYPE <">
+INPUT % <"> INPUT <"> 
+INPUTTYPE text <"> INPUT <">
+INPUTTYPE email <"> INPUT <">
+INPUTTYPE password <"> INPUT <">
+INPUTTYPE number <"> INPUT <">
+INPUTTYPE checkbox <"> INPUT <">
 INPUT " <"> INPUT <e>
 INPUT ' <=> INPUT <'>
-INPUT % <'> INPUT <'>
+INPUTTYPE ' <=> INPUTTYPE <'>
+INPUT % <'> INPUT <'> 
+INPUTTYPE text <'> INPUT <'>
+INPUTTYPE email <'> INPUT <'>
+INPUTTYPE password <'> INPUT <'>
+INPUTTYPE number <'> INPUT <'>
+INPUT checkbox <'> INPUT <'>
 INPUT ' <'> INPUT <e>
 
 INPUT rb <lb> INSIDEBODY <e>
