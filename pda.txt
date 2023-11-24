@@ -101,6 +101,7 @@ INSIDEBODY % <body> INSIDEBODY <body>
 
 INSIDEBODY h1 <lb> H1 <lb>
 H1 rb <lb> INSIDEH1 <h1>
+INSIDEH1 % <body> INSIDEH1 <body>
 INSIDEH1 lb <h1> INSIDEH1 <lb><h1>
 INSIDEH1 /h1 <lb> CH1 <lb>
 CH1 rb <lb> CH1 <e>
@@ -110,6 +111,7 @@ CH1 eps <h1> INSIDEBODY <e>
 
 INSIDEBODY h2 <lb> H2 <lb>
 H2 rb <lb> INSIDEH2 <h2>
+INSIDEH2 % <body> INSIDEH2 <body>
 INSIDEH2 lb <h2> INSIDEH2 <lb><h2>
 INSIDEH2 /h2 <lb> CH2 <lb>
 CH2 rb <lb> CH2 <e>
@@ -117,6 +119,7 @@ CH2 eps <h2> INSIDEBODY <e>
 
 INSIDEBODY h3 <lb> H3 <lb>
 H3 rb <lb> INSIDEH3 <h3>
+INSIDEH3 % <body> INSIDEH3 <body>
 INSIDEH3 lb <h3> INSIDEH3 <lb><h3>
 INSIDEH3 /h3 <lb> CH3 <lb>
 CH3 rb <lb> CH3 <e>
@@ -124,6 +127,7 @@ CH3 eps <h3> INSIDEBODY <e>
 
 INSIDEBODY h4 <lb> H4 <lb>
 H4 rb <lb> INSIDEH4 <h4>
+INSIDEH4 % <body> INSIDEH4 <body>
 INSIDEH4 lb <h4> INSIDEH4 <lb><h4>
 INSIDEH4 /h4 <lb> CH4 <lb>
 CH4 rb <lb> CH4 <e>
@@ -131,6 +135,7 @@ CH4 eps <h4> INSIDEBODY <e>
 
 INSIDEBODY h5 <lb> H5 <lb>
 H5 rb <lb> INSIDEH5 <h5>
+INSIDEH5 % <body> INSIDEH5 <body>
 INSIDEH5 lb <h5> INSIDEH5 <lb><h5>
 INSIDEH5 /h5 <lb> CH5 <lb>
 CH5 rb <lb> CH5 <e>
@@ -138,6 +143,7 @@ CH5 eps <h5> INSIDEBODY <e>
 
 INSIDEBODY h6 <lb> H6 <lb>
 H6 rb <lb> INSIDEH6 <h6>
+INSIDEH6 % <body> INSIDEH6 <body>
 INSIDEH6 lb <h6> INSIDEH6 <lb><h6>
 INSIDEH6 /h6 <lb> CH6 <lb>
 CH6 rb <lb> CH6 <e>
@@ -145,6 +151,7 @@ CH6 eps <h6> INSIDEBODY <e>
 
 INSIDEBODY p <lb> P <lb>
 P rb <lb> INSIDEP <p>
+INSIDEP % <body> INSIDEP <body>
 INSIDEP lb <p> INSIDEP <lb><p>
 INSIDEP /p <lb> P <lb>
 CP rb <lb> CP <e>
@@ -152,6 +159,7 @@ CP eps <p> INSIDEBODY <e>
 
 INSIDEBODY abbr <lb> ABBR <lb>
 ABBR rb <lb> INSIDEABBR <abbr>
+INSIDEABBR % <body> INSIDEABBR <body>
 INSIDEABBR lb <abbr> INSIDEABBR <lb><abbr>
 INSIDEABBR /abbr <lb> CABBR <lb>
 CABBR rb <lb> CABBR <e>

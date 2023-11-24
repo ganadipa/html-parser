@@ -202,7 +202,7 @@ class HTMLParser(PDA):
 
 if __name__ == '__main__':
     pda_file = "pda.txt"
-    html_file = "test/ezone.html"
+    html_file = "test/coba.html"
 
     parser2 = HTMLParser(pda_file)
     # parser2.print_delta()
