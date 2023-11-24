@@ -173,7 +173,7 @@ CDIV rb <lb> CDIV <e>
 CDIV eps <div> INSIDEBODY <e>
 
 INSIDEDIV div <lb> DIV <lb>
-
+CDIV eps <div> INSIDEDIV <e>
 
 
 FHTML lb <html> FHTML <lb><html>
