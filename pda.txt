@@ -96,7 +96,7 @@ CTITLE eps <title> INSIDEHEAD <e>
 
 
 
-INSIDEBODY % <body> INSIDEBODY <body>
+INSIDEBODY % <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
 
 
 INSIDEBODY h1 <lb> H1 <lb>
@@ -164,6 +164,48 @@ INSIDEABBR lb <abbr> INSIDEABBR <lb><abbr>
 INSIDEABBR /abbr <lb> CABBR <lb>
 CABBR rb <lb> CABBR <e>
 CABBR eps <h6> INSIDEBODY <e>
+
+# Below is for button
+
+# Gets <button> inside body 
+INSIDEBODY button <lb> BUTTON <lb> 
+
+# Attribute inside button
+BUTTON id <lb> BUTTON <attr><lb>
+BUTTON class <lb> BUTTON <attr><lb>
+BUTTON style <lb> BUTTON <attr><lb>
+BUTTON type <lb> BUTTON <typeattr><lb>
+
+
+BUTTON = <attr> BUTTON <=>
+BUTTON = <typeattr> BUTTON <type=>
+
+BUTTON " <=> BUTTON <">
+BUTTON " <type=> BUTTON <type">
+
+BUTTON % <"> BUTTON <">
+BUTTON submit <type"> BUTTON <type">
+BUTTON reset <type"> BUTTON <type">
+
+
+BUTTON " <"> BUTTON <e>
+
+BUTTON ' <=> BUTTON <'>
+BUTTON % <'> BUTTON <'>
+BUTTON ' <'> BUTTON <e>
+
+# gets '>' for button 
+BUTTON rb <lb> INSIDEBUTTON <button>
+
+
+# Inside button accepts any string (except ...)
+INSIDEBUTTON % <button> INSIDEBUTTON <button>
+
+# Closing button
+INSIDEBUTTON lb <button> INSIDEBUTTON <lb><button>
+INSIDEBUTTON /button <lb> CBUTTON <lb>
+CBUTTON rb <lb> CBUTTON <e>
+CBUTTON eps <h6> INSIDEBODY <e>
 
 
 

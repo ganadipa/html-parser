@@ -94,8 +94,12 @@ class HTMLParser(PDA):
                 elif (prev == "attr" and (self._current_char == "'" or self._current_char == '"')):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
-                    self.__next()
+                    dq_string = self.read_double_quote()
+                    print(dq_string)
+                    self.get_symbol(dq_string)
+                    self.epsilon_exploration()
                     prev = "openquote"
+                    print(self._current_char)
                 elif (prev == "openquote" and (self._current_char == "'" or self._current_char == '"')):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
@@ -141,21 +145,20 @@ class HTMLParser(PDA):
     def __ignore_blanks(self):
         # Bukan cuma blanks sih, tapi juga \n.
         while self._current_char == " " or self._current_char == "\n":
-            if (self._current_char == '\n'):
-                self._current_line += 1
             self.__next()
 
     def read_double_quote(self):
         # return None kalo double quote ga ditutup
+        # I.S. current char di open double quote
         double_quote_starts_line = self._current_line
+        self.__next()
         val = ""
 
-        while (self._current_char != '\"' and
-               self._current_char is not None):
-            if (self._current_char is None):
+        while (self._current_char != '\"'):
+            if (self._current_char == ""):
                 self.__errors.append({
                     "line": double_quote_starts_line,
-                    "error_message": "There is a double quote that doesn't have its closing double quote"
+                    "error_message": "Expected a closing double quote, found nothing."
                 })
                 return None
 
@@ -186,9 +189,6 @@ class HTMLParser(PDA):
                 self._current_char != "=" and
                 self._current_char is not None):
 
-            if self._current_char == "\n":
-                self._current_line += 1
-
             curr_attr += self._current_char
             self.__next()
 
@@ -197,12 +197,14 @@ class HTMLParser(PDA):
         return curr_attr
 
     def __next(self):
+        if (self._current_char == '\n'):
+            self._current_line += 1
         self._current_char = self.file.read(1)
 
 
 if __name__ == '__main__':
     pda_file = "pda.txt"
-    html_file = "test/coba.html"
+    html_file = "test/html.txt"
 
     parser2 = HTMLParser(pda_file)
     # parser2.print_delta()
