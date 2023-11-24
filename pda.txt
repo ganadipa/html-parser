@@ -5,9 +5,57 @@ START
 <Z>
 GANA
 E
+
+# Ini sisanya PDA DAH
 START lb <Z> START <lb><Z>
 START html <lb> HTML <lb>
+HTML id <lb> HTML <attr><lb>
+HTML class <lb> HTML <attr><lb>
+HTML style <lb> HTML <attr><lb>
+HTML = <attr> HTML <=>
+HTML " <=> HTML <">
+HTML % <"> HTML <">
+HTML " <"> HTML <e>
+HTML ' <=> HTML <'>
+HTML % <'> HTML <'>
+HTML ' <'> HTML <e>
 HTML rb <lb> UHTML <html>
+
+HEAD id <lb> HEAD <attr><lb>
+HEAD class <lb> HEAD <attr><lb>
+HEAD style <lb> HEAD <attr><lb>
+HEAD = <attr> HEAD <=>
+HEAD " <=> HEAD <">
+HEAD % <"> HEAD <">
+HEAD " <"> HEAD <e>
+HEAD ' <=> HEAD <'>
+HEAD % <'> HEAD <'>
+HEAD ' <'> HEAD <e>
+
+BODY id <lb> BODY <attr><lb>
+BODY class <lb> BODY <attr><lb>
+BODY style <lb> BODY <attr><lb>
+BODY = <attr> BODY <=>
+BODY " <=> BODY <">
+BODY % <"> BODY <">
+BODY " <"> BODY <e>
+BODY ' <=> BODY <'>
+BODY % <'> BODY <'>
+BODY ' <'> BODY <e>
+
+TITLE id <lb> TITLE <attr><lb>
+TITLE class <lb> TITLE <attr><lb>
+TITLE style <lb> TITLE <attr><lb>
+TITLE = <attr> TITLE <=>
+TITLE " <=> TITLE <">
+TITLE % <"> TITLE <">
+TITLE " <"> TITLE <e>
+TITLE ' <=> TITLE <'>
+TITLE % <'> TITLE <'>
+TITLE ' <'> TITLE <e>
+
+
+
 
 UHTML lb <html> UHTML <lb><html>
 UHTML head <lb> HEAD <lb>
@@ -46,6 +94,8 @@ CTITLE eps <title> INSIDEHEAD <e>
 
 
 
+
+
 INSIDEBODY % <body> INSIDEBODY <body>
 
 
@@ -62,3 +112,6 @@ FHTML /html <lb> CHTML <lb>
 CHTML rb <lb> CHTML <e>
 CHTML eps <html> CHTML <e>
 CHTML eps <Z> CHTML <e>
+
+
+
