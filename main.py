@@ -95,11 +95,11 @@ class HTMLParser(PDA):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
                     dq_string = self.read_double_quote()
-                    print(dq_string)
+
                     self.get_symbol(dq_string)
                     self.epsilon_exploration()
                     prev = "openquote"
-                    print(self._current_char)
+
                 elif (prev == "openquote" and (self._current_char == "'" or self._current_char == '"')):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()

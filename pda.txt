@@ -101,69 +101,167 @@ INSIDEBODY % <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
 
 INSIDEBODY h1 <lb> H1 <lb>
 H1 rb <lb> INSIDEH1 <h1>
-INSIDEH1 % <body> INSIDEH1 <body>
+INSIDEH1 % <h1> INSIDEH1 <h1>
 INSIDEH1 lb <h1> INSIDEH1 <lb><h1>
 INSIDEH1 /h1 <lb> CH1 <lb>
 CH1 rb <lb> CH1 <e>
 CH1 eps <h1> INSIDEBODY <e>
 
+INSIDEDIV h1 <lb> H1 <lb>
+CH1 eps <h1> INSIDEDIV <e>
+
+H1 id <lb> H1 <attr><lb>
+H1 class <lb> H1 <attr><lb>
+H1 style <lb> H1 <attr><lb>
+H1 = <attr> H1 <=>
+H1 " <=> H1 <">
+H1 % <"> H1 <">
+H1 " <"> H1 <e>
+H1 ' <=> H1 <'>
+H1 % <'> H1 <'>
+H1 ' <'> H1 <e>
 
 
 INSIDEBODY h2 <lb> H2 <lb>
 H2 rb <lb> INSIDEH2 <h2>
-INSIDEH2 % <body> INSIDEH2 <body>
+INSIDEH2 % <h2> INSIDEH2 <h2>
 INSIDEH2 lb <h2> INSIDEH2 <lb><h2>
 INSIDEH2 /h2 <lb> CH2 <lb>
 CH2 rb <lb> CH2 <e>
 CH2 eps <h2> INSIDEBODY <e>
 
+INSIDEDIV h2 <lb> H2 <lb>
+CH2 eps <h2> INSIDEDIV <e>
+
+H2 id <lb> H2 <attr><lb>
+H2 class <lb> H2 <attr><lb>
+H2 style <lb> H2 <attr><lb>
+H2 = <attr> H2 <=>
+H2 " <=> H2 <">
+H2 % <"> H2 <">
+H2 " <"> H2 <e>
+H2 ' <=> H2 <'>
+H2 % <'> H2 <'>
+H2 ' <'> H2 <e>
+
+
 INSIDEBODY h3 <lb> H3 <lb>
 H3 rb <lb> INSIDEH3 <h3>
-INSIDEH3 % <body> INSIDEH3 <body>
+INSIDEH3 % <h3> INSIDEH3 <h3>
 INSIDEH3 lb <h3> INSIDEH3 <lb><h3>
 INSIDEH3 /h3 <lb> CH3 <lb>
 CH3 rb <lb> CH3 <e>
 CH3 eps <h3> INSIDEBODY <e>
 
+INSIDEDIV h3 <lb> H3 <lb>
+CH3 eps <h2> INSIDEDIV <e>
+
+H3 id <lb> H3 <attr><lb>
+H3 class <lb> H3 <attr><lb>
+H3 style <lb> H3 <attr><lb>
+H3 = <attr> H3 <=>
+H3 " <=> H3 <">
+H3 % <"> H3 <">
+H3 " <"> H3 <e>
+H3 ' <=> H3 <'>
+H3 % <'> H3 <'>
+H3 ' <'> H3 <e>
+
 INSIDEBODY h4 <lb> H4 <lb>
 H4 rb <lb> INSIDEH4 <h4>
-INSIDEH4 % <body> INSIDEH4 <body>
+INSIDEH4 % <h4> INSIDEH4 <h4>
 INSIDEH4 lb <h4> INSIDEH4 <lb><h4>
 INSIDEH4 /h4 <lb> CH4 <lb>
 CH4 rb <lb> CH4 <e>
 CH4 eps <h4> INSIDEBODY <e>
 
+INSIDEDIV h4 <lb> H4 <lb>
+CH4 eps <h4> INSIDEDIV <e>
+
+H4 id <lb> H4 <attr><lb>
+H4 class <lb> H4 <attr><lb>
+H4 style <lb> H4 <attr><lb>
+H4 = <attr> H4 <=>
+H4 " <=> H4 <">
+H4 % <"> H4 <">
+H4 " <"> H4 <e>
+H4 ' <=> H4 <'>
+H4 % <'> H4 <'>
+H4 ' <'> H4 <e>
+
 INSIDEBODY h5 <lb> H5 <lb>
 H5 rb <lb> INSIDEH5 <h5>
-INSIDEH5 % <body> INSIDEH5 <body>
+INSIDEH5 % <h5> INSIDEH5 <h5>
 INSIDEH5 lb <h5> INSIDEH5 <lb><h5>
 INSIDEH5 /h5 <lb> CH5 <lb>
 CH5 rb <lb> CH5 <e>
 CH5 eps <h5> INSIDEBODY <e>
 
+INSIDEDIV h5 <lb> H5 <lb>
+CH5 eps <h5> INSIDEDIV <e>
+
+H5 id <lb> H5 <attr><lb>
+H5 class <lb> H5 <attr><lb>
+H5 style <lb> H5 <attr><lb>
+H5 = <attr> H5 <=>
+H5 " <=> H5 <">
+H5 % <"> H5 <">
+H5 " <"> H5 <e>
+H5 ' <=> H5 <'>
+H5 % <'> H5 <'>
+H5 ' <'> H5 <e>
+
 INSIDEBODY h6 <lb> H6 <lb>
 H6 rb <lb> INSIDEH6 <h6>
-INSIDEH6 % <body> INSIDEH6 <body>
+INSIDEH6 % <h6> INSIDEH6 <h6>
 INSIDEH6 lb <h6> INSIDEH6 <lb><h6>
 INSIDEH6 /h6 <lb> CH6 <lb>
 CH6 rb <lb> CH6 <e>
 CH6 eps <h6> INSIDEBODY <e>
 
+INSIDEDIV h6 <lb> H6 <lb>
+CH6 eps <h6> INSIDEDIV <e>
+
+H6 id <lb> H6 <attr><lb>
+H6 class <lb> H6 <attr><lb>
+H6 style <lb> H6 <attr><lb>
+H6 = <attr> H6 <=>
+H6 " <=> H6 <">
+H6 % <"> H6 <">
+H6 " <"> H6 <e>
+H6 ' <=> H6 <'>
+H6 % <'> H6 <'>
+H6 ' <'> H6 <e>
+
 INSIDEBODY p <lb> P <lb>
 P rb <lb> INSIDEP <p>
-INSIDEP % <body> INSIDEP <body>
+INSIDEP % <p> INSIDEP <p>
 INSIDEP lb <p> INSIDEP <lb><p>
 INSIDEP /p <lb> P <lb>
 CP rb <lb> CP <e>
 CP eps <p> INSIDEBODY <e>
 
+INSIDEDIV p <lb> P <lb>
+CP eps <abbr> INSIDEDIV <e>
+
+P id <lb> P <attr><lb>
+P class <lb> P <attr><lb>
+P style <lb> P <attr><lb>
+P = <attr> P <=>
+P " <=> P <">
+P % <"> P <">
+P " <"> P <e>
+P ' <=> P <'>
+P % <'> P <'>
+P ' <'> P <e>
+
 INSIDEBODY abbr <lb> ABBR <lb>
 ABBR rb <lb> INSIDEABBR <abbr>
-INSIDEABBR % <body> INSIDEABBR <body>
+INSIDEABBR % <abbr> INSIDEABBR <abbr>
 INSIDEABBR lb <abbr> INSIDEABBR <lb><abbr>
 INSIDEABBR /abbr <lb> CABBR <lb>
 CABBR rb <lb> CABBR <e>
-CABBR eps <h6> INSIDEBODY <e>
+CABBR eps <abbr> INSIDEBODY <e>
 
 # Below is for button
 
@@ -207,7 +305,47 @@ INSIDEBUTTON /button <lb> CBUTTON <lb>
 CBUTTON rb <lb> CBUTTON <e>
 CBUTTON eps <h6> INSIDEBODY <e>
 
+INSIDEDIV abbr <lb> ABBR <lb>
+CABBR eps <abbr> INSIDEDIV <e>
 
+ABBR id <lb> ABBR <attr><lb>
+ABBR class <lb> ABBR <attr><lb>
+ABBR style <lb> ABBR <attr><lb>
+ABBR = <attr> ABBR <=>
+ABBR " <=> ABBR <">
+ABBR % <"> ABBR <">
+ABBR " <"> ABBR <e>
+ABBR ' <=> ABBR <'>
+ABBR % <'> ABBR <'>
+ABBR ' <'> ABBR <e>
+
+INSIDEBODY div <lb> DIV <lb>
+DIV rb <lb> INSIDEDIV <div>
+INSIDEDIV lb <div> INSIDEDIV <lb><div>
+INSIDEDIV /div <lb> CDIV <lb>
+CDIV rb <lb> CDIV <e>
+CDIV eps <div> INSIDEBODY <e>
+
+INSIDEDIV div <lb> DIV <lb>
+CDIV eps <div> INSIDEDIV <e>
+
+DIV id <lb> DIV <attr><lb>
+DIV class <lb> DIV <attr><lb>
+DIV style <lb> DIV <attr><lb>
+DIV = <attr> DIV <=>
+DIV " <=> DIV <">
+DIV % <"> DIV <">
+DIV " <"> DIV <e>
+DIV ' <=> DIV <'>
+DIV % <'> DIV <'>
+DIV ' <'> DIV <e>
+
+INSIDEBODY table <lb> TABLE <lb>
+TABLE rb <lb> INSIDETABLE <table>
+INSIDETABLE lb <table> INSIDETABLE <lb><table>
+INSIDETABLE /table <lb> CTABLE <lb>
+CTABLE rb <lb> CTABLE <e>
+CTABLE eps <table> INSIDEBODY <e>
 
 FHTML lb <html> FHTML <lb><html>
 FHTML /html <lb> CHTML <lb>
