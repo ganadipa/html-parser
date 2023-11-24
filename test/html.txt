@@ -1,12 +1,10 @@
 <html id="1" class="d" style="">
   <head id="1" class="d" style="">
-    <link rel = "wohoo" class = "bobrok" id = "begitusyulit">
     <title class="style" id="5">it works</title>
   </head>
 
   <body class="style" id="5">
     hello world
-    <br>
     <h1>hello</h1>
     <h2>hello</h2>
     <h3>hello</h3>
