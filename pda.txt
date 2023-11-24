@@ -300,18 +300,23 @@ BUTTON = <attr> BUTTON <=>
 BUTTON = <typeattr> BUTTON <type=>
 
 BUTTON " <=> BUTTON <">
+BUTTON ' <=> BUTTON <'>
 BUTTON " <type=> BUTTON <type">
+BUTTON ' <type=> BUTTON <type'>
 
 BUTTON % <"> BUTTON <">
 BUTTON submit <type"> BUTTON <type">
 BUTTON reset <type"> BUTTON <type">
+BUTTON % <'> BUTTON <'>
+BUTTON submit <type'> BUTTON <type'>
+BUTTON reset <type'> BUTTON <type'>
 
 
 BUTTON " <"> BUTTON <e>
-
-BUTTON ' <=> BUTTON <'>
-BUTTON % <'> BUTTON <'>
+BUTTON " <type"> BUTTON <e>
 BUTTON ' <'> BUTTON <e>
+BUTTON ' <type'> BUTTON <e>
+
 
 # gets '>' for button 
 BUTTON rb <lb> INSIDEBUTTON <button>
@@ -324,7 +329,7 @@ INSIDEBUTTON % <button> INSIDEBUTTON <button>
 INSIDEBUTTON lb <button> INSIDEBUTTON <lb><button>
 INSIDEBUTTON /button <lb> CBUTTON <lb>
 CBUTTON rb <lb> CBUTTON <e>
-CBUTTON eps <h6> INSIDEBODY <e>
+CBUTTON eps <button> INSIDEBODY <e>
 
 INSIDEDIV abbr <lb> ABBR <lb>
 CABBR eps <abbr> INSIDEDIV <e>

@@ -15,5 +15,6 @@
     <h6>hello</h6>
     <hr id = "tongkol">
     <input class = "gana" type = "password">
+    <button type= "rese"></button>
   </body>
 </html>
