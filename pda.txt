@@ -117,6 +117,98 @@ TITLE ' <=> TITLE <'>
 TITLE % <'> TITLE <'>
 TITLE ' <'> TITLE <e>
 
+# Below is for script tag, dengan mengasumsikan script hanya bisa di dalam head dan di dalam body
+
+SCRIPT id <lb> SCRIPT <attr><lb>
+SCRIPT class <lb> SCRIPT <attr><lb>
+SCRIPT style <lb> SCRIPT <attr><lb>
+SCRIPT src <lb> SCRIPT <attr><lb>
+SCRIPT = <attr> SCRIPT <=>
+SCRIPT " <=> SCRIPT <">
+SCRIPT % <"> SCRIPT <">
+SCRIPT " <"> SCRIPT <e>
+SCRIPT ' <=> SCRIPT <'>
+SCRIPT % <'> SCRIPT <'>
+SCRIPT ' <'> SCRIPT <e>
+
+# Pokoknya script kalo ada itu harus anaknya body atau anaknya head
+INSIDEHEAD script <lb> SCRIPT <lb>
+INSIDEBODY script <lb> SCRIPT <lb>
+SCRIPT rb <lb> INSIDESCRIPT <script>
+INSIDESCRIPT % <script> INSIDESCRIPT <script>
+INSIDESCRIPT lb <script> INSIDESCRIPT <lb><script>
+INSIDESCRIPT /script <lb> CSCRIPT <lb>
+CSCRIPT rb <lb> CSCRIPT <e>
+CSCRIPT eps <script> INSIDEBODY <e>
+CSCRIPT eps <script> INSIDEHEAD <e>
+
+# Below is for form tag
+FORM id <lb> FORM <attr><lb>
+FORM class <lb> FORM <attr><lb>
+FORM style <lb> FORM <attr><lb>
+FORM action <lb> FORM <attr><lb>
+FORM method <lb> FORM <methodattr><lb>
+
+FORM = <attr> FORM <=>
+FORM = <methodattr> FORM <method=>
+
+FORM " <=> FORM <">
+FORM ' <=> FORM <'>
+FORM " <method=> FORM <method">
+FORM ' <method=> FORM <method'>
+
+FORM % <"> FORM <">
+FORM GET <method"> FORM <method">
+FORM POST <method"> FORM <method">
+FORM % <'> FORM <'>
+FORM GET <method'> FORM <method'>
+FORM POST <method'> FORM <method'>
+
+FORM " <"> FORM <e>
+FORM " <method"> FORM <e>
+FORM ' <'> FORM <e>
+FORM ' <method'> FORM <e>
+
+# Pokoknya form itu bisa di dalem div sama bisa di dalem body
+
+INSIDEBODY form <lb> FORM <lb>
+INSIDEDIV form <lb> FORM <lb>
+FORM rb <lb> INSIDEFORM <form>
+INSIDEFORM % <form> INSIDEFORM <form>
+INSIDEFORM lb <form> INSIDEFORM <lb><form>
+INSIDEFORM /form <lb> CFORM <lb>
+CFORM rb <lb> CFORM <e>
+CFORM eps <form> INSIDEBODY <e>
+CFORM eps <form> INSIDEDIV <e>
+
+
+
+
+
+
+UHTML lb <html> UHTML <lb><html>
+UHTML head <lb> HEAD <lb>
+HEAD rb <lb> INSIDEHEAD <head>
+INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
+INSIDEHEAD /head <lb> CHEAD <lb>
+CHEAD rb <lb> CHEAD <e>
+CHEAD eps <head> LHTML <e>
+
+
+
+
+LHTML lb <html> LHTML <lb><html>
+LHTML body <lb> BODY <lb>
+BODY rb <lb> INSIDEBODY <body>
+INSIDEBODY lb <body> INSIDEBODY <lb><body>
+INSIDEBODY /body <lb> CBODY <lb>
+CBODY rb <lb> CBODY <e>
+CBODY eps <body> FHTML <e>
+
+
+
+
+
 INSIDEHEAD title <lb> TITLE <lb>
 TITLE rb <lb> INSIDETITLE <title>
 INSIDETITLE % <title> INSIDETITLE <title>
@@ -321,6 +413,8 @@ P ' <'> P <e>
 
 # Gets <button> inside body 
 INSIDEBODY button <lb> BUTTON <lb> 
+INSIDEFORM button <lb> BUTTON <lb> 
+INSIDEDIV button <lb> BUTTON <lb> 
 
 # Attribute inside button
 BUTTON id <lb> BUTTON <attr><lb>
@@ -363,13 +457,19 @@ INSIDEBUTTON lb <button> INSIDEBUTTON <lb><button>
 INSIDEBUTTON /button <lb> CBUTTON <lb>
 CBUTTON rb <lb> CBUTTON <e>
 CBUTTON eps <button> INSIDEBODY <e>
+CBUTTON eps <button> INSIDEFORM <e>
+CBUTTON eps <button> INSIDEDIV <e>
+
+INSIDEDIV % <div> INSIDEDIV <div>
 
 INSIDEBODY div <lb> DIV <lb>
+INSIDEFORM div <lb> DIV <lb>
 DIV rb <lb> INSIDEDIV <div>
 INSIDEDIV lb <div> INSIDEDIV <lb><div>
 INSIDEDIV /div <lb> CDIV <lb>
 CDIV rb <lb> CDIV <e>
 CDIV eps <div> INSIDEBODY <e>
+CDIV eps <div> INSIDEFORM <e>
 
 INSIDEDIV div <lb> DIV <lb>
 CDIV eps <div> INSIDEDIV <e>
@@ -425,6 +525,7 @@ LINKBODY rb <lb> INSIDEBODY <e>
 
 # br Tag
 INSIDEBODY br <lb> BR <lb>
+INSIDEFORM br <lb> BR <lb>
 BR id <lb> BR <attr><lb>
 BR class <lb> BR <attr><lb>
 BR style <lb> BR <attr><lb>
@@ -437,6 +538,7 @@ BR % <'> BR <'>
 BR ' <'> BR <e>
 
 BR rb <lb> INSIDEBODY <e>
+BR rb <lb> INSIDEFORM <e>
 
 # hr Tag
 INSIDEBODY hr <lb> HR <lb>
@@ -486,6 +588,7 @@ IMG rb <lb> INSIDEBODY <e>
 
 # input Tag
 INSIDEBODY input <lb> INPUT <lb>
+INSIDEFORM input <lb> INPUT <lb>
 INPUT id <lb> INPUT <attr><lb>
 INPUT class <lb> INPUT <attr><lb>
 INPUT style <lb> INPUT <attr><lb>
@@ -512,6 +615,7 @@ INPUT checkbox <'> INPUT <'>
 INPUT ' <'> INPUT <e>
 
 INPUT rb <lb> INSIDEBODY <e>
+INPUT rb <lb> INSIDEFORM <e>
 
 # Endgame
 FHTML lb <html> FHTML <lb><html>

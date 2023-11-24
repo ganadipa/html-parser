@@ -5,7 +5,6 @@
   </head>
 
   <body class="style" id="5">
-    hello world
     <br>
     <h1>hello</h1>
     <h2>hello</h2>
@@ -15,5 +14,15 @@
     <h6>hello</h6>
     <hr id = "tongkol">
     <input class = "gana" type = "password">
+    <button type= "reset"></button>
+    <form action="/action_page.php" method="POST">
+  <div id="label">First name:</div><br>
+  <input type="text" id="fname"><br>
+  <div id="label">Last name:</div><br>
+  <input type="text" id="lname"><br><br>
+  <button type="submit">Submit</button>
+</form> 
+
+
   </body>
 </html>
