@@ -32,6 +32,7 @@ class HTMLParser(PDA):
         if self.is_accepted():
             print("Passed!")
         else:
+            print("Rejected!")
             self.print_errors()
 
         duration = time.time() - start
