@@ -1,16 +1,19 @@
 <html id="1" class="d" style="">
   <head id="1" class="d" style="">
+    <link rel = "wohoo" class = "bobrok" id = "begitusyulit">
     <title class="style" id="5">it works</title>
   </head>
 
   <body class="style" id="5">
-    <h1>hello</h1>
-    <h2>hello</h2>
-    <h3>hello</h3>
-    <h4>hello</h4>
-    <h5>hello</h5>
-    <h6>hello</h6>
     <button type= "reset"></button>
-    <div><form><div></form></div>
+    <form action="/action_page.php" method="POST">
+  <div id="label">First name:</div><br>
+  <input type="text" id="fname"><br>
+  <div id="label">Last name:</div><br>
+  <input type="text" id="lname"><br><br>
+  <button type="submit">Submit</button>
+</form> 
+
+
   </body>
 </html>
