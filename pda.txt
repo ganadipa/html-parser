@@ -8,6 +8,48 @@ E
 
 # Ini sisanya PDA DAH
 
+# HTML Formatting Elements
+
+INSIDE* b <lb> INSIDE* <b>
+INSIDE* rb <b> INSIDE* <inb>
+INSIDE* % <inb> INSIDE* <inb>
+INSIDE* lb <inb> INSIDE* <lb><inb>
+INSIDE* lb <inb> INSIDE* <inbb>
+INSIDE* /b <inbb> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* abbr <lb> INSIDE* <abbr>
+INSIDE* rb <abbr> INSIDE* <inabbr>
+INSIDE* % <inabbr> INSIDE* <inabbr>
+INSIDE* lb <inabbr> INSIDE* <lb><inabbr>
+INSIDE* lb <inabbr> INSIDE* <inabbrabbr>
+INSIDE* /abbr <inabbrabbr> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* em <lb> INSIDE* <em>
+INSIDE* rb <em> INSIDE* <inem>
+INSIDE* % <inem> INSIDE* <inem>
+INSIDE* lb <inem> INSIDE* <lb><inem>
+INSIDE* lb <inem> INSIDE* <inemem>
+INSIDE* /em <inemem> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* strong <lb> INSIDE* <strong>
+INSIDE* rb <strong> INSIDE* <instrong>
+INSIDE* % <instrong> INSIDE* <instrong>
+INSIDE* lb <instrong> INSIDE* <lb><instrong>
+INSIDE* lb <instrong> INSIDE* <instrongstrong>
+INSIDE* /strong <instrongstrong> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* small <lb> INSIDE* <small>
+INSIDE* rb <small> INSIDE* <insmall>
+INSIDE* % <insmall> INSIDE* <insmall>
+INSIDE* lb <insmall> INSIDE* <lb><insmall>
+INSIDE* lb <insmall> INSIDE* <insmallsmall>
+INSIDE* /small <insmallsmall> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
 # Guarantees HTML Tag is Added
 START lb <Z> START <lb><Z>
 START html <lb> HTML <lb>
@@ -263,7 +305,6 @@ CP rb <lb> CP <e>
 CP eps <p> INSIDEBODY <e>
 
 INSIDEDIV p <lb> P <lb>
-CP eps <abbr> INSIDEDIV <e>
 
 P id <lb> P <attr><lb>
 P class <lb> P <attr><lb>
@@ -275,14 +316,6 @@ P " <"> P <e>
 P ' <=> P <'>
 P % <'> P <'>
 P ' <'> P <e>
-
-INSIDEBODY abbr <lb> ABBR <lb>
-ABBR rb <lb> INSIDEABBR <abbr>
-INSIDEABBR % <abbr> INSIDEABBR <abbr>
-INSIDEABBR lb <abbr> INSIDEABBR <lb><abbr>
-INSIDEABBR /abbr <lb> CABBR <lb>
-CABBR rb <lb> CABBR <e>
-CABBR eps <abbr> INSIDEBODY <e>
 
 # Below is for button
 
@@ -330,20 +363,6 @@ INSIDEBUTTON lb <button> INSIDEBUTTON <lb><button>
 INSIDEBUTTON /button <lb> CBUTTON <lb>
 CBUTTON rb <lb> CBUTTON <e>
 CBUTTON eps <button> INSIDEBODY <e>
-
-INSIDEDIV abbr <lb> ABBR <lb>
-CABBR eps <abbr> INSIDEDIV <e>
-
-ABBR id <lb> ABBR <attr><lb>
-ABBR class <lb> ABBR <attr><lb>
-ABBR style <lb> ABBR <attr><lb>
-ABBR = <attr> ABBR <=>
-ABBR " <=> ABBR <">
-ABBR % <"> ABBR <">
-ABBR " <"> ABBR <e>
-ABBR ' <=> ABBR <'>
-ABBR % <'> ABBR <'>
-ABBR ' <'> ABBR <e>
 
 INSIDEBODY div <lb> DIV <lb>
 DIV rb <lb> INSIDEDIV <div>

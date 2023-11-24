@@ -117,13 +117,23 @@ class PDAstate():
                           and input_symbol not in ['lb', 'rb', '/', '"', "'"])
         is_symbol_match = (transition_function.input_symbol ==
                            input_symbol) or (i_symbol_check)
+        
+        if (transition_function.state_before[-1] == "*") :
+            prefix = transition_function.state_before.split("*")[0]
+            matching_state = self.state.startswith(prefix)
+            star = self.state.removeprefix(prefix)
+            ending_state = transition_function.state_after.replace("*", star)
+        else :
+            matching_state = transition_function.state_before == self.state
+            ending_state = transition_function.state_after
+        
         if (
             is_symbol_match and
-            transition_function.state_before == self.state and
+            matching_state and
             transition_function.top_before == self.stack.top()
         ):
             result = self.copy_self()
-            result.state = transition_function.state_after
+            result.state = ending_state
 
             result.stack.pop()
             for i in transition_function.top_after[::-1]:
