@@ -54,6 +54,77 @@ TITLE ' <=> TITLE <'>
 TITLE % <'> TITLE <'>
 TITLE ' <'> TITLE <e>
 
+# Below is for script tag, dengan mengasumsikan script hanya bisa di dalam head dan di dalam body
+
+SCRIPT id <lb> SCRIPT <attr><lb>
+SCRIPT class <lb> SCRIPT <attr><lb>
+SCRIPT style <lb> SCRIPT <attr><lb>
+SCRIPT src <lb> SCRIPT <attr><lb>
+SCRIPT = <attr> SCRIPT <=>
+SCRIPT " <=> SCRIPT <">
+SCRIPT % <"> SCRIPT <">
+SCRIPT " <"> SCRIPT <e>
+SCRIPT ' <=> SCRIPT <'>
+SCRIPT % <'> SCRIPT <'>
+SCRIPT ' <'> SCRIPT <e>
+
+INSIDEHEAD script <lb> SCRIPT <lb>
+INSIDEBODY script <lb> SCRIPT <lb>
+SCRIPT rb <lb> INSIDESCRIPT <script>
+INSIDESCRIPT % <script> INSIDESCRIPT <script>
+INSIDESCRIPT lb <script> INSIDESCRIPT <lb><script>
+INSIDESCRIPT /script <lb> CSCRIPT <lb>
+CSCRIPT rb <lb> CSCRIPT <e>
+CSCRIPT eps <script> INSIDEBODY <e>
+CSCRIPT eps <script> INSIDEHEAD <e>
+
+# Below is for form tag
+
+FORM id <lb> FORM <attr><lb>
+FORM class <lb> FORM <attr><lb>
+FORM style <lb> FORM <attr><lb>
+FORM action <lb> action <attr><lb>
+FORM method <lb> method <methodattr><lb>
+FORM = <attr> FORM <=>
+FORM " <=> FORM <">
+FORM % <"> FORM <">
+FORM " <"> FORM <e>
+FORM ' <=> FORM <'>
+FORM % <'> FORM <'>
+FORM ' <'> FORM <e>
+
+FORM = <attr> FORM <=>
+FORM = <methodattr> FORM <method=>
+
+FORM " <=> FORM <">
+FORM ' <=> FORM <'>
+FORM " <method=> FORM <method">
+FORM ' <method=> FORM <method'>
+
+FORM % <"> FORM <">
+FORM GET <method"> FORM <method">
+FORM POST <method"> FORM <method">
+FORM % <'> FORM <'>
+FORM GET <method'> FORM <method'>
+FORM POST <method'> FORM <method'>
+
+FORM " <"> FORM <e>
+FORM " <method"> FORM <e>
+FORM ' <'> FORM <e>
+FORM ' <method'> FORM <e>
+
+INSIDEBODY form <lb> FORM <lb>
+INSIDEDIV form <lb> FORM <lb>
+FORM rb <lb> INSIDEFORM <form>
+INSIDEFORM % <form> INSIDEFORM <form>
+INSIDEFORM lb <form> INSIDEFORM <lb><form>
+INSIDEFORM /form <lb> CFORM <lb>
+CFORM rb <lb> CFORM <e>
+CFORM eps <form> INSIDEBODY <e>
+CFORM eps <form> INSIDEDIV <e>
+
+
+
 
 
 
@@ -89,14 +160,6 @@ CTITLE rb <lb> CTITLE <e>
 CTITLE eps <title> INSIDEHEAD <e>
 
 
-
-
-
-
-
-
-
-INSIDEBODY % <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
 
 
 INSIDEBODY h1 <lb> H1 <lb>
