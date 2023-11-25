@@ -7,6 +7,50 @@ GANA
 E
 
 # Ini sisanya PDA DAH
+
+# HTML Formatting Elements
+
+INSIDE* b <lb> INSIDE* <b>
+INSIDE* rb <b> INSIDE* <inb>
+INSIDE* % <inb> INSIDE* <inb>
+INSIDE* lb <inb> INSIDE* <lb><inb>
+INSIDE* lb <inb> INSIDE* <inbb>
+INSIDE* /b <inbb> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* abbr <lb> INSIDE* <abbr>
+INSIDE* rb <abbr> INSIDE* <inabbr>
+INSIDE* % <inabbr> INSIDE* <inabbr>
+INSIDE* lb <inabbr> INSIDE* <lb><inabbr>
+INSIDE* lb <inabbr> INSIDE* <inabbrabbr>
+INSIDE* /abbr <inabbrabbr> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* em <lb> INSIDE* <em>
+INSIDE* rb <em> INSIDE* <inem>
+INSIDE* % <inem> INSIDE* <inem>
+INSIDE* lb <inem> INSIDE* <lb><inem>
+INSIDE* lb <inem> INSIDE* <inemem>
+INSIDE* /em <inemem> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* strong <lb> INSIDE* <strong>
+INSIDE* rb <strong> INSIDE* <instrong>
+INSIDE* % <instrong> INSIDE* <instrong>
+INSIDE* lb <instrong> INSIDE* <lb><instrong>
+INSIDE* lb <instrong> INSIDE* <instrongstrong>
+INSIDE* /strong <instrongstrong> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+INSIDE* small <lb> INSIDE* <small>
+INSIDE* rb <small> INSIDE* <insmall>
+INSIDE* % <insmall> INSIDE* <insmall>
+INSIDE* lb <insmall> INSIDE* <lb><insmall>
+INSIDE* lb <insmall> INSIDE* <insmallsmall>
+INSIDE* /small <insmallsmall> INSIDE* <lb>
+INSIDE* rb <lb> INSIDE* <e>
+
+# Guarantees HTML Tag is Added
 START lb <Z> START <lb><Z>
 START html <lb> HTML <lb>
 HTML id <lb> HTML <attr><lb>
@@ -20,7 +64,10 @@ HTML ' <=> HTML <'>
 HTML % <'> HTML <'>
 HTML ' <'> HTML <e>
 HTML rb <lb> UHTML <html>
+UHTML lb <html> UHTML <lb><html>
+UHTML head <lb> HEAD <lb>
 
+# Guarantees Head Tag is Added
 HEAD id <lb> HEAD <attr><lb>
 HEAD class <lb> HEAD <attr><lb>
 HEAD style <lb> HEAD <attr><lb>
@@ -31,7 +78,15 @@ HEAD " <"> HEAD <e>
 HEAD ' <=> HEAD <'>
 HEAD % <'> HEAD <'>
 HEAD ' <'> HEAD <e>
+HEAD rb <lb> INSIDEHEAD <head>
+INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
+INSIDEHEAD /head <lb> CHEAD <lb>
+CHEAD rb <lb> CHEAD <e>
+CHEAD eps <head> LHTML <e>
 
+# Guarantees Body Tag is Added
+LHTML lb <html> LHTML <lb><html>
+LHTML body <lb> BODY <lb>
 BODY id <lb> BODY <attr><lb>
 BODY class <lb> BODY <attr><lb>
 BODY style <lb> BODY <attr><lb>
@@ -42,7 +97,15 @@ BODY " <"> BODY <e>
 BODY ' <=> BODY <'>
 BODY % <'> BODY <'>
 BODY ' <'> BODY <e>
+BODY rb <lb> INSIDEBODY <body>
+INSIDEBODY lb <body> INSIDEBODY <lb><body>
+INSIDEBODY /body <lb> CBODY <lb>
+CBODY rb <lb> CBODY <e>
+CBODY eps <body> FHTML <e>
 
+# Inside Head Tags
+
+# Title Tag
 TITLE id <lb> TITLE <attr><lb>
 TITLE class <lb> TITLE <attr><lb>
 TITLE style <lb> TITLE <attr><lb>
@@ -53,6 +116,72 @@ TITLE " <"> TITLE <e>
 TITLE ' <=> TITLE <'>
 TITLE % <'> TITLE <'>
 TITLE ' <'> TITLE <e>
+
+# Below is for script tag, dengan mengasumsikan script hanya bisa di dalam head dan di dalam body
+
+SCRIPT id <lb> SCRIPT <attr><lb>
+SCRIPT class <lb> SCRIPT <attr><lb>
+SCRIPT style <lb> SCRIPT <attr><lb>
+SCRIPT src <lb> SCRIPT <attr><lb>
+SCRIPT = <attr> SCRIPT <=>
+SCRIPT " <=> SCRIPT <">
+SCRIPT % <"> SCRIPT <">
+SCRIPT " <"> SCRIPT <e>
+SCRIPT ' <=> SCRIPT <'>
+SCRIPT % <'> SCRIPT <'>
+SCRIPT ' <'> SCRIPT <e>
+
+# Pokoknya script kalo ada itu harus anaknya body atau anaknya head
+INSIDEHEAD script <lb> SCRIPT <lb>
+INSIDEBODY script <lb> SCRIPT <lb>
+SCRIPT rb <lb> INSIDESCRIPT <script>
+INSIDESCRIPT % <script> INSIDESCRIPT <script>
+INSIDESCRIPT lb <script> INSIDESCRIPT <lb><script>
+INSIDESCRIPT /script <lb> CSCRIPT <lb>
+CSCRIPT rb <lb> CSCRIPT <e>
+CSCRIPT eps <script> INSIDEBODY <e>
+CSCRIPT eps <script> INSIDEHEAD <e>
+
+# Below is for form tag
+FORM id <lb> FORM <attr><lb>
+FORM class <lb> FORM <attr><lb>
+FORM style <lb> FORM <attr><lb>
+FORM action <lb> FORM <attr><lb>
+FORM method <lb> FORM <methodattr><lb>
+
+FORM = <attr> FORM <=>
+FORM = <methodattr> FORM <method=>
+
+FORM " <=> FORM <">
+FORM ' <=> FORM <'>
+FORM " <method=> FORM <method">
+FORM ' <method=> FORM <method'>
+
+FORM % <"> FORM <">
+FORM GET <method"> FORM <method">
+FORM POST <method"> FORM <method">
+FORM % <'> FORM <'>
+FORM GET <method'> FORM <method'>
+FORM POST <method'> FORM <method'>
+
+FORM " <"> FORM <e>
+FORM " <method"> FORM <e>
+FORM ' <'> FORM <e>
+FORM ' <method'> FORM <e>
+
+# Pokoknya form itu bisa di dalem div sama bisa di dalem body
+
+INSIDEBODY form <lb> FORM <lb>
+INSIDEDIV form <lb> FORM <lb>
+FORM rb <lb> INSIDEFORM <form>
+INSIDEFORM % <form> INSIDEFORM <form>
+INSIDEFORM lb <form> INSIDEFORM <lb><form>
+INSIDEFORM /form <lb> CFORM <lb>
+CFORM rb <lb> CFORM <e>
+CFORM eps <form> INSIDEBODY <e>
+CFORM eps <form> INSIDEDIV <e>
+
+
 
 
 
@@ -88,14 +217,42 @@ INSIDETITLE /title <lb> CTITLE <lb>
 CTITLE rb <lb> CTITLE <e>
 CTITLE eps <title> INSIDEHEAD <e>
 
+# link Tag
+# LINKMISS = MISSING REL
+INSIDEHEAD link <lb> LINKMISSHEAD <lb>
+LINKMISSHEAD id <lb> LINKMISSHEAD <attr><lb>
+LINKMISSHEAD class <lb> LINKMISSHEAD <attr><lb>
+LINKMISSHEAD style <lb> LINKMISSHEAD <attr><lb>
+LINKMISSHEAD href <lb> LINKMISSHEAD <attr><lb>
+LINKMISSHEAD rel <lb> LINKHEAD <attr><lb>
+LINKMISSHEAD = <attr> LINKMISSHEAD <=>
+LINKMISSHEAD " <=> LINKMISSHEAD <">
+LINKMISSHEAD % <"> LINKMISSHEAD <">
+LINKMISSHEAD " <"> LINKMISSHEAD <e>
+LINKMISSHEAD ' <=> LINKMISSHEAD <'>
+LINKMISSHEAD % <'> LINKMISSHEAD <'>
+LINKMISSHEAD ' <'> LINKMISSHEAD <e>
+
+LINKHEAD id <lb> LINKHEAD <attr><lb>
+LINKHEAD class <lb> LINKHEAD <attr><lb>
+LINKHEAD style <lb> LINKHEAD <attr><lb>
+LINKHEAD href <lb> LINKHEAD <attr><lb>
+LINKHEAD rel <lb> LINKHEAD <attr><lb>
+LINKHEAD = <attr> LINKHEAD <=>
+LINKHEAD " <=> LINKHEAD <">
+LINKHEAD % <"> LINKHEAD <">
+LINKHEAD " <"> LINKHEAD <e>
+LINKHEAD ' <=> LINKHEAD <'>
+LINKHEAD % <'> LINKHEAD <'>
+LINKHEAD ' <'> LINKHEAD <e>
+
+LINKHEAD rb <lb> INSIDEHEAD <e>
 
 
 
 
-
-
-INSIDEBODY % <body> INSIDEBODY <body>
-
+# Inside Body Functions
+INSIDEBODY % <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
 
 INSIDEBODY h1 <lb> H1 <lb>
 H1 rb <lb> INSIDEH1 <h1>
@@ -235,7 +392,7 @@ INSIDEBODY p <lb> P <lb>
 P rb <lb> INSIDEP <p>
 INSIDEP % <p> INSIDEP <p>
 INSIDEP lb <p> INSIDEP <lb><p>
-INSIDEP /p <lb> P <lb>
+INSIDEP /p <lb> CP <lb>
 CP rb <lb> CP <e>
 CP eps <p> INSIDEBODY <e>
 
@@ -253,34 +410,67 @@ P ' <=> P <'>
 P % <'> P <'>
 P ' <'> P <e>
 
-INSIDEBODY abbr <lb> ABBR <lb>
-ABBR rb <lb> INSIDEABBR <abbr>
-INSIDEABBR % <abbr> INSIDEABBR <abbr>
-INSIDEABBR lb <abbr> INSIDEABBR <lb><abbr>
-INSIDEABBR /abbr <lb> CABBR <lb>
-CABBR rb <lb> CABBR <e>
-CABBR eps <abbr> INSIDEBODY <e>
+# Below is for button
 
-INSIDEDIV abbr <lb> ABBR <lb>
-CABBR eps <abbr> INSIDEDIV <e>
+# Gets <button> inside body 
+INSIDEBODY button <lb> BUTTON <lb> 
+INSIDEFORM button <lb> BUTTON <lb> 
+INSIDEDIV button <lb> BUTTON <lb> 
 
-ABBR id <lb> ABBR <attr><lb>
-ABBR class <lb> ABBR <attr><lb>
-ABBR style <lb> ABBR <attr><lb>
-ABBR = <attr> ABBR <=>
-ABBR " <=> ABBR <">
-ABBR % <"> ABBR <">
-ABBR " <"> ABBR <e>
-ABBR ' <=> ABBR <'>
-ABBR % <'> ABBR <'>
-ABBR ' <'> ABBR <e>
+# Attribute inside button
+BUTTON id <lb> BUTTON <attr><lb>
+BUTTON class <lb> BUTTON <attr><lb>
+BUTTON style <lb> BUTTON <attr><lb>
+BUTTON type <lb> BUTTON <typeattr><lb>
+
+
+BUTTON = <attr> BUTTON <=>
+BUTTON = <typeattr> BUTTON <type=>
+
+BUTTON " <=> BUTTON <">
+BUTTON ' <=> BUTTON <'>
+BUTTON " <type=> BUTTON <type">
+BUTTON ' <type=> BUTTON <type'>
+
+BUTTON % <"> BUTTON <">
+BUTTON submit <type"> BUTTON <type">
+BUTTON reset <type"> BUTTON <type">
+BUTTON % <'> BUTTON <'>
+BUTTON submit <type'> BUTTON <type'>
+BUTTON reset <type'> BUTTON <type'>
+
+
+BUTTON " <"> BUTTON <e>
+BUTTON " <type"> BUTTON <e>
+BUTTON ' <'> BUTTON <e>
+BUTTON ' <type'> BUTTON <e>
+
+
+# gets '>' for button 
+BUTTON rb <lb> INSIDEBUTTON <button>
+
+
+# Inside button accepts any string (except ...)
+INSIDEBUTTON % <button> INSIDEBUTTON <button>
+
+# Closing button
+INSIDEBUTTON lb <button> INSIDEBUTTON <lb><button>
+INSIDEBUTTON /button <lb> CBUTTON <lb>
+CBUTTON rb <lb> CBUTTON <e>
+CBUTTON eps <button> INSIDEBODY <e>
+CBUTTON eps <button> INSIDEFORM <e>
+CBUTTON eps <button> INSIDEDIV <e>
+
+INSIDEDIV % <div> INSIDEDIV <div>
 
 INSIDEBODY div <lb> DIV <lb>
+INSIDEFORM div <lb> DIV <lb>
 DIV rb <lb> INSIDEDIV <div>
 INSIDEDIV lb <div> INSIDEDIV <lb><div>
 INSIDEDIV /div <lb> CDIV <lb>
 CDIV rb <lb> CDIV <e>
 CDIV eps <div> INSIDEBODY <e>
+CDIV eps <div> INSIDEFORM <e>
 
 INSIDEDIV div <lb> DIV <lb>
 CDIV eps <div> INSIDEDIV <e>
@@ -390,6 +580,219 @@ TH % <'> TH <'>
 TH ' <'> TH <e>
 
 
+
+INSIDEDIV table <lb> TABLE <lb>
+CTABLE eps <table> INSIDEDIV <e>
+
+TABLE id <lb> TABLE <attr><lb>
+TABLE class <lb> TABLE <attr><lb>
+TABLE style <lb> TABLE <attr><lb>
+TABLE = <attr> TABLE <=>
+TABLE " <=> TABLE <">
+TABLE % <"> TABLE <">
+TABLE " <"> TABLE <e>
+TABLE ' <=> TABLE <'>
+TABLE % <'> TABLE <'>
+TABLE ' <'> TABLE <e>
+
+INSIDETABLE tr <lb> TR <lb>
+TR rb <lb> INSIDETR <tr>
+INSIDETR lb <tr> INSIDETR <lb><tr>
+INSIDETR /tr <lb> CTR <lb>
+CTR rb <lb> CTR <e>
+CTR eps <tr> INSIDETABLE <e>
+
+INSIDETR tr <lb> TR <lb>
+CTR eps <tr> INSIDETR <e>
+
+TR id <lb> TR <attr><lb>
+TR class <lb> TR <attr><lb>
+TR style <lb> TR <attr><lb>
+TR = <attr> TR <=>
+TR " <=> TR <">
+TR % <"> TR <">
+TR " <"> TR <e>
+TR ' <=> TR <'>
+TR % <'> TR <'>
+TR ' <'> TR <e>
+
+INSIDETR td <lb> TD <lb>
+TD rb <lb> INSIDETD <td>
+INSIDETD % <td> INSIDETD <td>
+INSIDETD lb <td> INSIDETD <lb><td>
+INSIDETD /td <lb> CTD <lb>
+CTD rb <lb> CTD <e>
+CTD eps <td> INSIDETR <e>
+
+INSIDETH td <lb> TD <lb>
+CTD eps <td> INSIDETH <e>
+
+INSIDETD td <lb> TD <lb>
+CTD eps <td> INSIDETD <eps>
+
+TD id <lb> TD <attr><lb>
+TD class <lb> TD <attr><lb>
+TD style <lb> TD <attr><lb>
+TD = <attr> TD <=>
+TD " <=> TD <">
+TD % <"> TD <">
+TD " <"> TD <e>
+TD ' <=> TD <'>
+TD % <'> TD <'>
+TD ' <'> TD <e>
+
+INSIDETR th <lb> TH <lb>
+TH rb <lb> INSIDETH <th>
+INSIDETH % <th> INSIDETH <th>
+INSIDETH lb <th> INSIDETH <lb><th>
+INSIDETH /th <lb> CTH <lb>
+CTH rb <lb> CTH <e>
+CTH eps <th> INSIDETR <e>
+
+INSIDETD th <lb> TH <lb>
+CTH eps <th> INSIDETD <e>
+
+INSIDETH th <lb> TH <lb>
+CTH eps <th> INSIDETH <e>
+
+TH id <lb> TH <attr><lb>
+TH class <lb> TH <attr><lb>
+TH style <lb> TH <attr><lb>
+TH = <attr> TH <=>
+TH " <=> TH <">
+TH % <"> TH <">
+TH " <"> TH <e>
+TH ' <=> TH <'>
+TH % <'> TH <'>
+TH ' <'> TH <e>
+
+
+# link Tag
+# LINKMISS = MISSING REL
+INSIDEBODY link <lb> LINKMISSBODY <lb>
+LINKMISSBODY id <lb> LINKMISSBODY <attr><lb>
+LINKMISSBODY class <lb> LINKMISSBODY <attr><lb>
+LINKMISSBODY style <lb> LINKMISSBODY <attr><lb>
+LINKMISSBODY href <lb> LINKMISSBODY <attr><lb>
+LINKMISSBODY rel <lb> LINKBODY <attr><lb>
+LINKMISSBODY = <attr> LINKMISSBODY <=>
+LINKMISSBODY " <=> LINKMISSBODY <">
+LINKMISSBODY % <"> LINKMISSBODY <">
+LINKMISSBODY " <"> LINKMISSBODY <e>
+LINKMISSBODY ' <=> LINKMISSBODY <'>
+LINKMISSBODY % <'> LINKMISSBODY <'>
+LINKMISSBODY ' <'> LINKMISSBODY <e>
+
+LINKBODY id <lb> LINKBODY <attr><lb>
+LINKBODY class <lb> LINKBODY <attr><lb>
+LINKBODY style <lb> LINKBODY <attr><lb>
+LINKBODY href <lb> LINKBODY <attr><lb>
+LINKBODY rel <lb> LINKBODY <attr><lb>
+LINKBODY = <attr> LINKBODY <=>
+LINKBODY " <=> LINKBODY <">
+LINKBODY % <"> LINKBODY <">
+LINKBODY " <"> LINKBODY <e>
+LINKBODY ' <=> LINKBODY <'>
+LINKBODY % <'> LINKBODY <'>
+LINKBODY ' <'> LINKBODY <e>
+
+LINKBODY rb <lb> INSIDEBODY <e>
+
+# br Tag
+INSIDEBODY br <lb> BR <lb>
+INSIDEFORM br <lb> BR <lb>
+BR id <lb> BR <attr><lb>
+BR class <lb> BR <attr><lb>
+BR style <lb> BR <attr><lb>
+BR = <attr> BR <=>
+BR " <=> BR <">
+BR % <"> BR <">
+BR " <"> BR <e>
+BR ' <=> BR <'>
+BR % <'> BR <'>
+BR ' <'> BR <e>
+
+BR rb <lb> INSIDEBODY <e>
+BR rb <lb> INSIDEFORM <e>
+
+# hr Tag
+INSIDEBODY hr <lb> HR <lb>
+HR id <lb> HR <attr><lb>
+HR class <lb> HR <attr><lb>
+HR style <lb> HR <attr><lb>
+HR = <attr> HR <=>
+HR " <=> HR <">
+HR % <"> HR <">
+HR " <"> HR <e>
+HR ' <=> HR <'>
+HR % <'> HR <'>
+HR ' <'> HR <e>
+
+HR rb <lb> INSIDEBODY <e>
+
+# img Tag
+# IMGMISS = MISSING src
+INSIDEBODY img <lb> IMGMISS <lb>
+IMGMISS id <lb> IMGMISS <attr><lb>
+IMGMISS class <lb> IMGMISS <attr><lb>
+IMGMISS style <lb> IMGMISS <attr><lb>
+IMGMISS alt <lb> IMGMISS <attr><lb>
+IMGMISS src <lb> IMG <attr><lb>
+IMGMISS = <attr> IMGMISS <=>
+IMGMISS " <=> IMGMISS <">
+IMGMISS % <"> IMGMISS <">
+IMGMISS " <"> IMGMISS <e>
+IMGMISS ' <=> IMGMISS <'>
+IMGMISS % <'> IMGMISS <'>
+IMGMISS ' <'> IMGMISS <e>
+
+IMG id <lb> IMG <attr><lb>
+IMG class <lb> IMG <attr><lb>
+IMG style <lb> IMG <attr><lb>
+IMG href <lb> IMG <attr><lb>
+IMG rel <lb> IMG <attr><lb>
+IMG = <attr> IMG <=>
+IMG " <=> IMG <">
+IMG % <"> IMG <">
+IMG " <"> IMG <e>
+IMG ' <=> IMG <'>
+IMG % <'> IMG <'>
+IMG ' <'> IMG <e>
+
+IMG rb <lb> INSIDEBODY <e>
+
+# input Tag
+INSIDEBODY input <lb> INPUT <lb>
+INSIDEFORM input <lb> INPUT <lb>
+INPUT id <lb> INPUT <attr><lb>
+INPUT class <lb> INPUT <attr><lb>
+INPUT style <lb> INPUT <attr><lb>
+INPUT type <lb> INPUTTYPE <attr><lb>
+INPUT = <attr> INPUT <=>
+INPUTTYPE = <attr> INPUTTYPE <=>
+INPUT " <=> INPUT <">
+INPUTTYPE " <=> INPUTTYPE <">
+INPUT % <"> INPUT <"> 
+INPUTTYPE text <"> INPUT <">
+INPUTTYPE email <"> INPUT <">
+INPUTTYPE password <"> INPUT <">
+INPUTTYPE number <"> INPUT <">
+INPUTTYPE checkbox <"> INPUT <">
+INPUT " <"> INPUT <e>
+INPUT ' <=> INPUT <'>
+INPUTTYPE ' <=> INPUTTYPE <'>
+INPUT % <'> INPUT <'> 
+INPUTTYPE text <'> INPUT <'>
+INPUTTYPE email <'> INPUT <'>
+INPUTTYPE password <'> INPUT <'>
+INPUTTYPE number <'> INPUT <'>
+INPUT checkbox <'> INPUT <'>
+INPUT ' <'> INPUT <e>
+
+INPUT rb <lb> INSIDEBODY <e>
+INPUT rb <lb> INSIDEFORM <e>
+
+# Endgame
 FHTML lb <html> FHTML <lb><html>
 FHTML /html <lb> CHTML <lb>
 CHTML rb <lb> CHTML <e>
