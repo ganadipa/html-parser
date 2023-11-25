@@ -94,8 +94,6 @@ CTITLE eps <title> INSIDEHEAD <e>
 
 
 
-
-
 INSIDEBODY % <body> INSIDEBODY <body>
 
 
@@ -242,7 +240,7 @@ CP rb <lb> CP <e>
 CP eps <p> INSIDEBODY <e>
 
 INSIDEDIV p <lb> P <lb>
-CP eps <abbr> INSIDEDIV <e>
+CP eps <p> INSIDEDIV <e>
 
 P id <lb> P <attr><lb>
 P class <lb> P <attr><lb>
@@ -304,6 +302,93 @@ INSIDETABLE lb <table> INSIDETABLE <lb><table>
 INSIDETABLE /table <lb> CTABLE <lb>
 CTABLE rb <lb> CTABLE <e>
 CTABLE eps <table> INSIDEBODY <e>
+
+
+INSIDEDIV table <lb> TABLE <lb>
+CTABLE eps <table> INSIDEDIV <e>
+
+TABLE id <lb> TABLE <attr><lb>
+TABLE class <lb> TABLE <attr><lb>
+TABLE style <lb> TABLE <attr><lb>
+TABLE = <attr> TABLE <=>
+TABLE " <=> TABLE <">
+TABLE % <"> TABLE <">
+TABLE " <"> TABLE <e>
+TABLE ' <=> TABLE <'>
+TABLE % <'> TABLE <'>
+TABLE ' <'> TABLE <e>
+
+INSIDETABLE tr <lb> TR <lb>
+TR rb <lb> INSIDETR <tr>
+INSIDETR lb <tr> INSIDETR <lb><tr>
+INSIDETR /tr <lb> CTR <lb>
+CTR rb <lb> CTR <e>
+CTR eps <tr> INSIDETABLE <e>
+
+INSIDETR tr <lb> TR <lb>
+CTR eps <tr> INSIDETR <e>
+
+TR id <lb> TR <attr><lb>
+TR class <lb> TR <attr><lb>
+TR style <lb> TR <attr><lb>
+TR = <attr> TR <=>
+TR " <=> TR <">
+TR % <"> TR <">
+TR " <"> TR <e>
+TR ' <=> TR <'>
+TR % <'> TR <'>
+TR ' <'> TR <e>
+
+INSIDETR td <lb> TD <lb>
+TD rb <lb> INSIDETD <td>
+INSIDETD % <td> INSIDETD <td>
+INSIDETD lb <td> INSIDETD <lb><td>
+INSIDETD /td <lb> CTD <lb>
+CTD rb <lb> CTD <e>
+CTD eps <td> INSIDETR <e>
+
+INSIDETH td <lb> TD <lb>
+CTD eps <td> INSIDETH <e>
+
+INSIDETD td <lb> TD <lb>
+CTD eps <td> INSIDETD <eps>
+
+TD id <lb> TD <attr><lb>
+TD class <lb> TD <attr><lb>
+TD style <lb> TD <attr><lb>
+TD = <attr> TD <=>
+TD " <=> TD <">
+TD % <"> TD <">
+TD " <"> TD <e>
+TD ' <=> TD <'>
+TD % <'> TD <'>
+TD ' <'> TD <e>
+
+INSIDETR th <lb> TH <lb>
+TH rb <lb> INSIDETH <th>
+INSIDETH % <th> INSIDETH <th>
+INSIDETH lb <th> INSIDETH <lb><th>
+INSIDETH /th <lb> CTH <lb>
+CTH rb <lb> CTH <e>
+CTH eps <th> INSIDETR <e>
+
+INSIDETD th <lb> TH <lb>
+CTH eps <th> INSIDETD <e>
+
+INSIDETH th <lb> TH <lb>
+CTH eps <th> INSIDETH <e>
+
+TH id <lb> TH <attr><lb>
+TH class <lb> TH <attr><lb>
+TH style <lb> TH <attr><lb>
+TH = <attr> TH <=>
+TH " <=> TH <">
+TH % <"> TH <">
+TH " <"> TH <e>
+TH ' <=> TH <'>
+TH % <'> TH <'>
+TH ' <'> TH <e>
+
 
 FHTML lb <html> FHTML <lb><html>
 FHTML /html <lb> CHTML <lb>
