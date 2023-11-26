@@ -115,18 +115,20 @@ class PDAstate():
     def transition(self, input_symbol, transition_function):
         i_symbol_check = (transition_function.input_symbol == '%'
                           and input_symbol not in ['lb', 'rb', '/', '"', "'"])
+        i_symbol_check2 = (transition_function.input_symbol == '$'
+                           and input_symbol not in ['lb', 'rb'])
         is_symbol_match = (transition_function.input_symbol ==
-                           input_symbol) or (i_symbol_check)
-        
-        if (transition_function.state_before[-1] == "*") :
+                           input_symbol) or (i_symbol_check) or (i_symbol_check2)
+
+        if (transition_function.state_before[-1] == "*"):
             prefix = transition_function.state_before.split("*")[0]
             matching_state = self.state.startswith(prefix)
             star = self.state.removeprefix(prefix)
             ending_state = transition_function.state_after.replace("*", star)
-        else :
+        else:
             matching_state = transition_function.state_before == self.state
             ending_state = transition_function.state_after
-        
+
         if (
             is_symbol_match and
             matching_state and

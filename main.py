@@ -30,9 +30,9 @@ class HTMLParser(PDA):
 
         # Now self.__errors is filled. We check whether there is some errors or not
         if self.is_accepted():
-            print("Passed!")
+            print("Accepted!")
         else:
-            print("Rejected!")
+            print("Syntax Error!")
             self.print_errors()
 
         duration = time.time() - start
@@ -74,24 +74,56 @@ class HTMLParser(PDA):
 
                 self.get_symbol("lb")
                 self.epsilon_exploration()
+
+                if (len(self.current_states) == 0):
+                    self._push_error(self._current_line,
+                                     "Unexpected character: '<'")
+                    break
+
                 prev = "lb"
                 continue
             elif (self._current_char == ">"):
                 self.get_symbol("rb")
                 self.epsilon_exploration()
                 self.__next()
+
+                if (len(self.current_states) == 0):
+                    self._push_error(self._current_line,
+                                     "Unexpected character: '>'")
+                    break
+
                 prev = "rb"
+
             else:
                 if (prev == 'lb'):
                     label_tag = self.read_label_tag()
                     self.get_symbol(label_tag)
                     self.epsilon_exploration()
                     prev = "labeltag"
+                    if (label_tag == '!--'):
+                        prev = 'comment'
+
+                    if (len(self.current_states) == 0):
+                        if (label_tag == 'body'):
+                            self._push_error(
+                                self._current_line, f"Unexpected body tag.")
+                            break
+
+                        self._push_error(
+                            self._current_line, f"Undefined label tag, found: <{label_tag} ... ")
+                        break
+
                 elif (prev == 'labeltag' or prev == 'endquote'):
                     attr = self.read_attr()
                     self.get_symbol(attr)
                     self.epsilon_exploration()
                     prev = "attr"
+
+                    if (len(self.current_states) == 0):
+                        self._push_error(
+                            self._current_line, f"Illegal attribute for the defined label tag. ")
+                        break
+
                 elif (prev == "attr" and (self._current_char == "'" or self._current_char == '"')):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
@@ -101,15 +133,29 @@ class HTMLParser(PDA):
                     self.epsilon_exploration()
                     prev = "openquote"
 
+                    if (len(self.current_states) == 0):
+                        self._push_error(
+                            self._current_line, f"Illegal value for '{attr}' attribute. Found: {dq_string}.")
+                        break
+
                 elif (prev == "openquote" and (self._current_char == "'" or self._current_char == '"')):
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
                     self.__next()
                     prev = "endquote"
+                elif (prev == 'comment'):
+                    attr = self.read_attr()
+                    self.get_symbol(attr)
+                    self.epsilon_exploration()
                 else:
                     self.get_symbol(self._current_char)
                     self.epsilon_exploration()
                     self.__next()
+
+                    if (len(self.current_states) == 0):
+                        self._push_error(
+                            self._current_line, f"Unexpected Character: {self._current_char}.")
+                        break
 
             self.__ignore_blanks()
 
@@ -204,10 +250,8 @@ class HTMLParser(PDA):
 
 
 if __name__ == '__main__':
-    pda_file = "pda.txt"
-    html_file = "test/html.txt"
+    pda_file = sys.argv[1]
+    html_file = "test/" + sys.argv[2]
 
     parser2 = HTMLParser(pda_file)
-    # parser2.print_delta()
     parser2.check(html_file)
-    print(parser2.filename)
