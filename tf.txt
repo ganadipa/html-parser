@@ -1,2 +1,2 @@
-INSIDEBUTTON /button <lb> CBUTTON <lb>
-CBUTTON rb <lb> CBUTTON <e>
+COMMENT % <lb> COMMENT <lb>
+COMMENT -- <lb> CCOMMENT <lb>

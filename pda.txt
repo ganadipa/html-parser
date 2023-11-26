@@ -1,4 +1,4 @@
-START HTML INSIDEBODY CHTML UHTML LHTML INSIDEHEAD INSIDEH1
+START HTML INSIDEBODY CHTML UHTML LHTML INHEAD INSIDEH1
 lb rb / html
 <Z> <html>
 START
@@ -105,9 +105,9 @@ HEAD " <"> HEAD <e>
 HEAD ' <=> HEAD <'>
 HEAD % <'> HEAD <'>
 HEAD ' <'> HEAD <e>
-HEAD rb <lb> INSIDEHEAD <head>
-INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
-INSIDEHEAD /head <lb> CHEAD <lb>
+HEAD rb <lb> INHEAD <head>
+INHEAD lb <head> INHEAD <lb><head>
+INHEAD /head <lb> CHEAD <lb>
 CHEAD rb <lb> CHEAD <e>
 CHEAD eps <head> LHTML <e>
 
@@ -158,15 +158,15 @@ SCRIPT % <'> SCRIPT <'>
 SCRIPT ' <'> SCRIPT <e>
 
 # Pokoknya script kalo ada itu harus anaknya body atau anaknya head
-INSIDEHEAD script <lb> SCRIPT <lb>
+INHEAD script <lb> SCRIPT <lb>
 INSIDEBODY script <lb> SCRIPT <lb>
-SCRIPT rb <lb> INSIDESCRIPT <script>
-INSIDESCRIPT $ <script> INSIDESCRIPT <script>
-INSIDESCRIPT lb <script> INSIDESCRIPT <lb><script>
-INSIDESCRIPT /script <lb> CSCRIPT <lb>
+SCRIPT rb <lb> INSCRIPT <script>
+INSCRIPT $ <script> INSCRIPT <script>
+INSCRIPT lb <script> INSCRIPT <lb><script>
+INSCRIPT /script <lb> CSCRIPT <lb>
 CSCRIPT rb <lb> CSCRIPT <e>
 CSCRIPT eps <script> INSIDEBODY <e>
-CSCRIPT eps <script> INSIDEHEAD <e>
+CSCRIPT eps <script> INHEAD <e>
 
 # Below is for form tag
 FORM id <lb> FORM <attr><lb>
@@ -214,9 +214,9 @@ CFORM eps <form> INSIDEDIV <e>
 
 UHTML lb <html> UHTML <lb><html>
 UHTML head <lb> HEAD <lb>
-HEAD rb <lb> INSIDEHEAD <head>
-INSIDEHEAD lb <head> INSIDEHEAD <lb><head>
-INSIDEHEAD /head <lb> CHEAD <lb>
+HEAD rb <lb> INHEAD <head>
+INHEAD lb <head> INHEAD <lb><head>
+INHEAD /head <lb> CHEAD <lb>
 CHEAD rb <lb> CHEAD <e>
 CHEAD eps <head> LHTML <e>
 
@@ -235,17 +235,17 @@ CBODY eps <body> FHTML <e>
 
 
 
-INSIDEHEAD title <lb> TITLE <lb>
-TITLE rb <lb> INSIDETITLE <title>
-INSIDETITLE $ <title> INSIDETITLE <title>
-INSIDETITLE lb <title> INSIDETITLE <lb><title>
-INSIDETITLE /title <lb> CTITLE <lb>
+INHEAD title <lb> TITLE <lb>
+TITLE rb <lb> INTITLE <title>
+INTITLE $ <title> INTITLE <title>
+INTITLE lb <title> INTITLE <lb><title>
+INTITLE /title <lb> CTITLE <lb>
 CTITLE rb <lb> CTITLE <e>
-CTITLE eps <title> INSIDEHEAD <e>
+CTITLE eps <title> INHEAD <e>
 
 # link Tag
 # LINKMISS = MISSING REL
-INSIDEHEAD link <lb> LINKMISSHEAD <lb>
+INHEAD link <lb> LINKMISSHEAD <lb>
 LINKMISSHEAD id <lb> LINKMISSHEAD <attr><lb>
 LINKMISSHEAD class <lb> LINKMISSHEAD <attr><lb>
 LINKMISSHEAD style <lb> LINKMISSHEAD <attr><lb>
@@ -272,7 +272,7 @@ LINKHEAD ' <=> LINKHEAD <'>
 LINKHEAD % <'> LINKHEAD <'>
 LINKHEAD ' <'> LINKHEAD <e>
 
-LINKHEAD rb <lb> INSIDEHEAD <e>
+LINKHEAD rb <lb> INHEAD <e>
 
 # Inside Body Functions
 INSIDEBODY $ <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
@@ -773,7 +773,7 @@ INPUT/ rb <lb> INSIDEDIV <e>
 
 # Comments
 INSIDEBODY !-- <lb> COMMENT <lb>
-INSIDEHEAD !-- <lb> COMMENT <lb>
+INHEAD !-- <lb> COMMENT <lb>
 INSIDEFORM !-- <lb> COMMENT <lb>
 INSIDEDIV !-- <lb> COMMENT <lb>
 INSIDEH1 !-- <lb> COMMENT <lb>
@@ -784,18 +784,18 @@ INSIDEH5 !-- <lb> COMMENT <lb>
 INSIDEH6 !-- <lb> COMMENT <lb>
 INSIDEBUTTON !-- <lb> COMMENT <lb>
 INSIDEP !-- <lb> COMMENT <lb>
-INSIDESCRIPT !-- <lb> COMMENT <lb>
+INSCRIPT !-- <lb> COMMENT <lb>
 INSIDETABLE !-- <lb> COMMENT <lb>
 INSIDETD !-- <lb> COMMENT <lb>
 INSIDETH !-- <lb> COMMENT <lb>
 INSIDETR !-- <lb> COMMENT <lb>
-INSIDETITLE !-- <lb> COMMENT <lb>
+INTITLE !-- <lb> COMMENT <lb>
 
 
 COMMENT % <lb> COMMENT <lb>
 COMMENT -- <lb> CCOMMENT <lb>
 CCOMMENT rb <lb> INSIDEBODY <e> 
-CCOMMENT rb <lb> INSIDEHEAD <e> 
+CCOMMENT rb <lb> INHEAD <e> 
 CCOMMENT rb <lb> INSIDEFORM <e> 
 CCOMMENT rb <lb> INSIDEDH1 <e> 
 CCOMMENT rb <lb> INSIDEDH2 <e> 
@@ -806,12 +806,12 @@ CCOMMENT rb <lb> INSIDEDH6 <e>
 CCOMMENT rb <lb> INSIDEDIV <e> 
 CCOMMENT rb <lb> INSIDEBUTTON <e> 
 CCOMMENT rb <lb> INSIDEP <e> 
-CCOMMENT rb <lb> INSIDESCRIPT <e> 
+CCOMMENT rb <lb> INSCRIPT <e> 
 CCOMMENT rb <lb> INSIDETABLE <e> 
 CCOMMENT rb <lb> INSIDETD <e> 
 CCOMMENT rb <lb> INSIDETH <e> 
 CCOMMENT rb <lb> INSIDETR <e> 
-CCOMMENT rb <lb> INSIDETITLE <e> 
+CCOMMENT rb <lb> INTITLE <e> 
 
 # Endgame
 FHTML lb <html> FHTML <lb><html>
