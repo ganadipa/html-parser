@@ -223,7 +223,6 @@ class PDA():
 
                 transition_function_line = f.readline()
 
-        self.print_stack_symbol_from_delta()
         self.current_states = [PDAstate(self.start_state, self.start_symbol)]
 
     def add_state(self, state: str):
