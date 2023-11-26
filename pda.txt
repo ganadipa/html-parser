@@ -441,7 +441,7 @@ P ' <'> P <e>
 
 # Below is for button
 
-# Gets <button> inside body 
+# Gets <button> inside body, form, button
 INSIDEBODY button <lb> BUTTON <lb> 
 INSIDEFORM button <lb> BUTTON <lb> 
 INSIDEDIV button <lb> BUTTON <lb> 

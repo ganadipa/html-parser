@@ -1,2 +1,2 @@
-INSIDEFORM $ <form> INSIDEFORM <form>
-INSIDEFORM lb <form> INSIDEFORM <lb><form>
+INSIDEBUTTON /button <lb> CBUTTON <lb>
+CBUTTON rb <lb> CBUTTON <e>
