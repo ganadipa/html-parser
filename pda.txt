@@ -723,14 +723,9 @@ IMG ' <=> IMG <'>
 IMG % <'> IMG <'>
 IMG ' <'> IMG <e>
 
-IMG / <lb> IMG/ <lb>
-IMG/ rb <lb> IMG/ <lb>
 IMG rb <lb> INSIDEBODY <e>
-IMG/ rb <lb> INSIDEBODY <e>
 IMG rb <lb> INSIDEFORM <e>
-IMG/ rb <lb> INSIDEFORM <e>
 IMG rb <lb> INSIDEDIV <e>
-IMG/ rb <lb> INSIDEDIV <e>
 
 # input Tag
 INSIDEBODY input <lb> INPUT <lb>

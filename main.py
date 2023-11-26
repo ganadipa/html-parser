@@ -198,10 +198,11 @@ class HTMLParser(PDA):
         # return None kalo double quote ga ditutup
         # I.S. current char di open double quote
         double_quote_starts_line = self._current_line
+        opening_char = self._current_char
         self.__next()
         val = ""
 
-        while (self._current_char != '\"'):
+        while (self._current_char != opening_char):
             if (self._current_char == ""):
                 self.__errors.append({
                     "line": double_quote_starts_line,
