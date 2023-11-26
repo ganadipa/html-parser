@@ -1,1 +1,0 @@
-python main.py pda.txt "ezone.html"
