@@ -197,6 +197,7 @@ class PDA():
             # Rest is entries of transition functions
             transition_function_line = f.readline()
             while transition_function_line != "":
+
                 if (transition_function_line == '\n'):
                     transition_function_line = f.readline()
                     continue
