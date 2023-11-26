@@ -1,2 +1,0 @@
-COMMENT % <lb> COMMENT <lb>
-COMMENT -- <lb> CCOMMENT <lb>
