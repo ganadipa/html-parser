@@ -28,7 +28,7 @@ with open("tf.txt", "r") as f:
         bef_top_stack = t_function[2]
         aft_state = t_function[3]
         aft_top_stack = stringToListOfTag(t_function[4])
-        print(input_symbol, end=" ")
+        print(input_symbol, end=", ")
         print(bef_top_stack, end="/")
         print(t_function[4], end=" ")
         tf_line = f.readline()

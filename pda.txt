@@ -8,6 +8,33 @@ E
 
 # Ini sisanya PDA DAH
 
+# <a> tag.
+INSIDEBODY a <lb> A <lb>
+A rb <lb> INSIDEA <a>
+INSIDEA $ <a> INSIDEA <a>
+INSIDEA lb <a> INSIDEA <lb><a>
+INSIDEA /a <lb> CA <lb>
+CA rb <lb> CA <e>
+CA eps <a> INSIDEBODY <e>
+
+INSIDEDIV a <lb> A <lb>
+CA eps <a> INSIDEDIV <e>
+
+INSIDEFORM a <lb> A <lb>
+CA eps <a> INSIDEFORM <e>
+
+A id <lb> A <attr><lb>
+A class <lb> A <attr><lb>
+A style <lb> A <attr><lb>
+A href <lb> A <attr><lb>
+A = <attr> A <=>
+A " <=> A <">
+A $ <"> A <">
+A " <"> A <e>
+A ' <=> A <'>
+A $ <'> A <'>
+A ' <'> H5 <e>
+
 # HTML Formatting Elements
 
 INSIDE* b <lb> INSIDE* <b>
@@ -118,7 +145,6 @@ TITLE % <'> TITLE <'>
 TITLE ' <'> TITLE <e>
 
 # Below is for script tag, dengan mengasumsikan script hanya bisa di dalam head dan di dalam body
-
 SCRIPT id <lb> SCRIPT <attr><lb>
 SCRIPT class <lb> SCRIPT <attr><lb>
 SCRIPT style <lb> SCRIPT <attr><lb>
@@ -248,9 +274,6 @@ LINKHEAD ' <'> LINKHEAD <e>
 
 LINKHEAD rb <lb> INSIDEHEAD <e>
 
-
-
-
 # Inside Body Functions
 INSIDEBODY $ <body> INSIDEBODY <body> # karakter apapun di dalam body bisa
 
@@ -270,10 +293,10 @@ H1 class <lb> H1 <attr><lb>
 H1 style <lb> H1 <attr><lb>
 H1 = <attr> H1 <=>
 H1 " <=> H1 <">
-H1 % <"> H1 <">
+H1 $ <"> H1 <">
 H1 " <"> H1 <e>
 H1 ' <=> H1 <'>
-H1 % <'> H1 <'>
+H1 $ <'> H1 <'>
 H1 ' <'> H1 <e>
 
 
@@ -293,10 +316,10 @@ H2 class <lb> H2 <attr><lb>
 H2 style <lb> H2 <attr><lb>
 H2 = <attr> H2 <=>
 H2 " <=> H2 <">
-H2 % <"> H2 <">
+H2 $ <"> H2 <">
 H2 " <"> H2 <e>
 H2 ' <=> H2 <'>
-H2 % <'> H2 <'>
+H2 $ <'> H2 <'>
 H2 ' <'> H2 <e>
 
 
@@ -316,10 +339,10 @@ H3 class <lb> H3 <attr><lb>
 H3 style <lb> H3 <attr><lb>
 H3 = <attr> H3 <=>
 H3 " <=> H3 <">
-H3 % <"> H3 <">
+H3 $ <"> H3 <">
 H3 " <"> H3 <e>
 H3 ' <=> H3 <'>
-H3 % <'> H3 <'>
+H3 $ <'> H3 <'>
 H3 ' <'> H3 <e>
 
 INSIDEBODY h4 <lb> H4 <lb>
@@ -338,10 +361,10 @@ H4 class <lb> H4 <attr><lb>
 H4 style <lb> H4 <attr><lb>
 H4 = <attr> H4 <=>
 H4 " <=> H4 <">
-H4 % <"> H4 <">
+H4 $ <"> H4 <">
 H4 " <"> H4 <e>
 H4 ' <=> H4 <'>
-H4 % <'> H4 <'>
+H4 $ <'> H4 <'>
 H4 ' <'> H4 <e>
 
 INSIDEBODY h5 <lb> H5 <lb>
@@ -363,10 +386,10 @@ H5 class <lb> H5 <attr><lb>
 H5 style <lb> H5 <attr><lb>
 H5 = <attr> H5 <=>
 H5 " <=> H5 <">
-H5 % <"> H5 <">
+H5 $ <"> H5 <">
 H5 " <"> H5 <e>
 H5 ' <=> H5 <'>
-H5 % <'> H5 <'>
+H5 $ <'> H5 <'>
 H5 ' <'> H5 <e>
 
 INSIDEBODY h6 <lb> H6 <lb>
@@ -385,10 +408,10 @@ H6 class <lb> H6 <attr><lb>
 H6 style <lb> H6 <attr><lb>
 H6 = <attr> H6 <=>
 H6 " <=> H6 <">
-H6 % <"> H6 <">
+H6 $ <"> H6 <">
 H6 " <"> H6 <e>
 H6 ' <=> H6 <'>
-H6 % <'> H6 <'>
+H6 $ <'> H6 <'>
 H6 ' <'> H6 <e>
 
 INSIDEBODY p <lb> P <lb>
@@ -402,15 +425,18 @@ CP eps <p> INSIDEBODY <e>
 INSIDEDIV p <lb> P <lb>
 CP eps <p> INSIDEDIV <e>
 
+INSIDEFORM p <lb> P <lb>
+CP eps <p> INSIDEFORM <e>
+
 P id <lb> P <attr><lb>
 P class <lb> P <attr><lb>
 P style <lb> P <attr><lb>
 P = <attr> P <=>
 P " <=> P <">
-P % <"> P <">
+P $ <"> P <">
 P " <"> P <e>
 P ' <=> P <'>
-P % <'> P <'>
+P $ <'> P <'>
 P ' <'> P <e>
 
 # Below is for button
@@ -453,7 +479,7 @@ BUTTON ' <type'> BUTTON <e>
 BUTTON rb <lb> INSIDEBUTTON <button>
 
 
-# Inside button accepts any string (except ...)
+# Inside button accepts any string
 INSIDEBUTTON $ <button> INSIDEBUTTON <button>
 
 # Closing button
@@ -500,6 +526,7 @@ CTABLE eps <table> INSIDEBODY <e>
 INSIDEDIV table <lb> TABLE <lb>
 CTABLE eps <table> INSIDEDIV <e>
 
+
 TABLE id <lb> TABLE <attr><lb>
 TABLE class <lb> TABLE <attr><lb>
 TABLE style <lb> TABLE <attr><lb>
@@ -510,6 +537,7 @@ TABLE " <"> TABLE <e>
 TABLE ' <=> TABLE <'>
 TABLE % <'> TABLE <'>
 TABLE ' <'> TABLE <e>
+
 
 INSIDETABLE tr <lb> TR <lb>
 TR rb <lb> INSIDETR <tr>
@@ -582,92 +610,6 @@ TH ' <=> TH <'>
 TH % <'> TH <'>
 TH ' <'> TH <e>
 
-
-
-INSIDEDIV table <lb> TABLE <lb>
-CTABLE eps <table> INSIDEDIV <e>
-
-TABLE id <lb> TABLE <attr><lb>
-TABLE class <lb> TABLE <attr><lb>
-TABLE style <lb> TABLE <attr><lb>
-TABLE = <attr> TABLE <=>
-TABLE " <=> TABLE <">
-TABLE % <"> TABLE <">
-TABLE " <"> TABLE <e>
-TABLE ' <=> TABLE <'>
-TABLE % <'> TABLE <'>
-TABLE ' <'> TABLE <e>
-
-INSIDETABLE tr <lb> TR <lb>
-TR rb <lb> INSIDETR <tr>
-INSIDETR lb <tr> INSIDETR <lb><tr>
-INSIDETR /tr <lb> CTR <lb>
-CTR rb <lb> CTR <e>
-CTR eps <tr> INSIDETABLE <e>
-
-INSIDETR tr <lb> TR <lb>
-CTR eps <tr> INSIDETR <e>
-
-TR id <lb> TR <attr><lb>
-TR class <lb> TR <attr><lb>
-TR style <lb> TR <attr><lb>
-TR = <attr> TR <=>
-TR " <=> TR <">
-TR % <"> TR <">
-TR " <"> TR <e>
-TR ' <=> TR <'>
-TR % <'> TR <'>
-TR ' <'> TR <e>
-
-INSIDETR td <lb> TD <lb>
-TD rb <lb> INSIDETD <td>
-INSIDETD $ <td> INSIDETD <td>
-INSIDETD lb <td> INSIDETD <lb><td>
-INSIDETD /td <lb> CTD <lb>
-CTD rb <lb> CTD <e>
-CTD eps <td> INSIDETR <e>
-
-INSIDETH td <lb> TD <lb>
-CTD eps <td> INSIDETH <e>
-
-INSIDETD td <lb> TD <lb>
-CTD eps <td> INSIDETD <eps>
-
-TD id <lb> TD <attr><lb>
-TD class <lb> TD <attr><lb>
-TD style <lb> TD <attr><lb>
-TD = <attr> TD <=>
-TD " <=> TD <">
-TD % <"> TD <">
-TD " <"> TD <e>
-TD ' <=> TD <'>
-TD % <'> TD <'>
-TD ' <'> TD <e>
-
-INSIDETR th <lb> TH <lb>
-TH rb <lb> INSIDETH <th>
-INSIDETH $ <th> INSIDETH <th>
-INSIDETH lb <th> INSIDETH <lb><th>
-INSIDETH /th <lb> CTH <lb>
-CTH rb <lb> CTH <e>
-CTH eps <th> INSIDETR <e>
-
-INSIDETD th <lb> TH <lb>
-CTH eps <th> INSIDETD <e>
-
-INSIDETH th <lb> TH <lb>
-CTH eps <th> INSIDETH <e>
-
-TH id <lb> TH <attr><lb>
-TH class <lb> TH <attr><lb>
-TH style <lb> TH <attr><lb>
-TH = <attr> TH <=>
-TH " <=> TH <">
-TH % <"> TH <">
-TH " <"> TH <e>
-TH ' <=> TH <'>
-TH % <'> TH <'>
-TH ' <'> TH <e>
 
 
 # link Tag
@@ -831,9 +773,45 @@ INPUT/ rb <lb> INSIDEDIV <e>
 
 # Comments
 INSIDEBODY !-- <lb> COMMENT <lb>
+INSIDEHEAD !-- <lb> COMMENT <lb>
+INSIDEFORM !-- <lb> COMMENT <lb>
+INSIDEDIV !-- <lb> COMMENT <lb>
+INSIDEH1 !-- <lb> COMMENT <lb>
+INSIDEH2 !-- <lb> COMMENT <lb>
+INSIDEH3 !-- <lb> COMMENT <lb>
+INSIDEH4 !-- <lb> COMMENT <lb>
+INSIDEH5 !-- <lb> COMMENT <lb>
+INSIDEH6 !-- <lb> COMMENT <lb>
+INSIDEBUTTON !-- <lb> COMMENT <lb>
+INSIDEP !-- <lb> COMMENT <lb>
+INSIDESCRIPT !-- <lb> COMMENT <lb>
+INSIDETABLE !-- <lb> COMMENT <lb>
+INSIDETD !-- <lb> COMMENT <lb>
+INSIDETH !-- <lb> COMMENT <lb>
+INSIDETR !-- <lb> COMMENT <lb>
+INSIDETITLE !-- <lb> COMMENT <lb>
+
+
 COMMENT % <lb> COMMENT <lb>
 COMMENT -- <lb> CCOMMENT <lb>
 CCOMMENT rb <lb> INSIDEBODY <e> 
+CCOMMENT rb <lb> INSIDEHEAD <e> 
+CCOMMENT rb <lb> INSIDEFORM <e> 
+CCOMMENT rb <lb> INSIDEDH1 <e> 
+CCOMMENT rb <lb> INSIDEDH2 <e> 
+CCOMMENT rb <lb> INSIDEDH3 <e> 
+CCOMMENT rb <lb> INSIDEDH4 <e> 
+CCOMMENT rb <lb> INSIDEDH5 <e> 
+CCOMMENT rb <lb> INSIDEDH6 <e> 
+CCOMMENT rb <lb> INSIDEDIV <e> 
+CCOMMENT rb <lb> INSIDEBUTTON <e> 
+CCOMMENT rb <lb> INSIDEP <e> 
+CCOMMENT rb <lb> INSIDESCRIPT <e> 
+CCOMMENT rb <lb> INSIDETABLE <e> 
+CCOMMENT rb <lb> INSIDETD <e> 
+CCOMMENT rb <lb> INSIDETH <e> 
+CCOMMENT rb <lb> INSIDETR <e> 
+CCOMMENT rb <lb> INSIDETITLE <e> 
 
 # Endgame
 FHTML lb <html> FHTML <lb><html>
