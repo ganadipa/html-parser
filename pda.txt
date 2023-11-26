@@ -703,8 +703,8 @@ IMG id <lb> IMG <attr><lb>
 IMG class <lb> IMG <attr><lb>
 IMG style <lb> IMG <attr><lb>
 IMG alt <lb> IMG <attr><lb>
-IMG href <lb> IMG <attr><lb>
-IMG rel <lb> IMG <attr><lb>
+IMG <lb> IMG <attr><lb>
+IMG <lb> IMG <attr><lb>
 IMG = <attr> IMG <=>
 IMG " <=> IMG <">
 IMG % <"> IMG <">
