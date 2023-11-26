@@ -658,14 +658,9 @@ BR ' <=> BR <'>
 BR % <'> BR <'>
 BR ' <'> BR <e>
 
-BR / <lb> BR/ <lb>
-BR/ rb <lb> BR/ <lb>
 BR rb <lb> INSIDEBODY <e>
-BR/ rb <lb> INSIDEBODY <e>
 BR rb <lb> INSIDEFORM <e>
-BR/ rb <lb> INSIDEFORM <e>
 BR rb <lb> INSIDEDIV <e>
-BR/ rb <lb> INSIDEDIV <e>
 
 # hr Tag
 INSIDEBODY hr <lb> HR <lb>
@@ -682,14 +677,9 @@ HR ' <=> HR <'>
 HR % <'> HR <'>
 HR ' <'> HR <e>
 
-HR / <lb> HR/ <lb>
-HR/ rb <lb> HR/ <lb>
 HR rb <lb> INSIDEBODY <e>
-HR/ rb <lb> INSIDEBODY <e>
 HR rb <lb> INSIDEFORM <e>
-HR/ rb <lb> INSIDEFORM <e>
 HR rb <lb> INSIDEDIV <e>
-HR/ rb <lb> INSIDEDIV <e>
 
 # img Tag
 # IMGMISS = MISSING src
@@ -723,14 +713,9 @@ IMG ' <=> IMG <'>
 IMG % <'> IMG <'>
 IMG ' <'> IMG <e>
 
-IMG / <lb> IMG/ <lb>
-IMG/ rb <lb> IMG/ <lb>
 IMG rb <lb> INSIDEBODY <e>
-IMG/ rb <lb> INSIDEBODY <e>
 IMG rb <lb> INSIDEFORM <e>
-IMG/ rb <lb> INSIDEFORM <e>
 IMG rb <lb> INSIDEDIV <e>
-IMG/ rb <lb> INSIDEDIV <e>
 
 # input Tag
 INSIDEBODY input <lb> INPUT <lb>
@@ -762,14 +747,9 @@ INPUT checkbox <'> INPUT <'>
 INPUT ' <'> INPUT <e>
 
 
-INPUT / <lb> INPUT/ <lb>
-INPUT/ rb <lb> INPUT/ <lb>
 INPUT rb <lb> INSIDEBODY <e>
-INPUT/ rb <lb> INSIDEBODY <e>
 INPUT rb <lb> INSIDEFORM <e>
-INPUT/ rb <lb> INSIDEFORM <e>
 INPUT rb <lb> INSIDEDIV <e>
-INPUT/ rb <lb> INSIDEDIV <e>
 
 # Comments
 INSIDEBODY !-- <lb> COMMENT <lb>
