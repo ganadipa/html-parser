@@ -1,9 +1,9 @@
-START HTML INSIDEBODY CHTML UHTML LHTML INHEAD INSIDEH1
-lb rb / html
-<Z> <html>
+INSIDEBODY A INSIDEA CA INSIDEDIV INSIDEFORM H5 START HTML UHTML HEAD INHEAD CHEAD LHTML BODY CBODY FHTML TITLE SCRIPT INSCRIPT CSCRIPT FORM CFORM INTITLE CTITLE LINKMISSHEAD LINKHEAD H1 INSIDEH1 CH1 H2 INSIDEH2 CH2 H3 INSIDEH3 CH3 H4 INSIDEH4 CH4 INSIDEH5 CH5 H6 INSIDEH6 CH6 P INSIDEP CP BUTTON INSIDEBUTTON CBUTTON DIV CDIV TABLE INSIDETABLE CTABLE TR INSIDETR CTR TD INSIDETD CTD INSIDETH TH CTH LINKMISSBODY LINKBODY BR BR/ HR HR/ IMGMISS IMG IMG/ INPUT INPUTTYPE INPUT/ COMMENT CCOMMENT INSIDEDH1 INSIDEDH2 INSIDEDH3 INSIDEDH4 INSIDEDH5 INSIDEDH6 CHTML
+a rb  lb /a eps id class style href = " ' b /b abbr /abbr em /em strong /strong small /small html head /head body /body src script /script action method GET POST form /form title /title link rel h1 /h1 h2 /h2 h3 /h3 h4 /h4 h5 /h5 h6 /h6 p /p button type submit reset /button div /div table /table tr /tr td /td th /th br / hr img alt input text email password number checkbox !-- -- /html
+<lb> <a> <attr> <=> <"> <'> <b> <inb> <inbb> <abbr> <inabbr> <inabbrabbr> <em> <inem> <inemem> <strong> <instrong> <instrongstrong> <small> <insmall> <insmallsmall> <Z> <html> <head> <body> <script> <methodattr> <method=> <method"> <method'> <form> <title> <h1> <h2> <h3> <h4> <h5> <h6> <p> <typeattr> <type=> <type"> <type'> <button> <div> <table> <tr> <td> <th>
 START
 <Z>
-GANA
+CHTML
 E
 
 # Ini sisanya PDA DAH

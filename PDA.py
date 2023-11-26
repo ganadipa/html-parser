@@ -78,17 +78,6 @@ class TransitionFunction():
         self.top_after = topAfter
         self.state_after = stateAfter
 
-    # def _checker(symbol, top_before, top_after):
-
-    #     strict_top_after_check = isinstance(symbol, list)
-    #     if (not strict_top_after_check):
-    #         raise Exception("Wrong type.")
-
-    #     length = len(strict_top_after_check)
-    #     for i in range(length):
-    #         if not isinstance(strict_top_after_check[i], str):
-    #             raise Exception("Wrong type in transition function.")
-
     def __str__(self):
         return f"delta({self.state_before}, {self.input_symbol}, {self.top_before}) = ({self.state_after}, {self.top_after})"
 
@@ -234,6 +223,7 @@ class PDA():
 
                 transition_function_line = f.readline()
 
+        self.print_stack_symbol_from_delta()
         self.current_states = [PDAstate(self.start_state, self.start_symbol)]
 
     def add_state(self, state: str):
@@ -314,6 +304,46 @@ class PDA():
             self.get_symbol(symbol)
             self.epsilon_exploration()
         return self.is_accepted()
+
+    def print_states_from_delta(self):
+        seen = []
+        for tf in self.delta:
+            bef_state = tf.state_before
+            aft_state = tf.state_after
+
+            if bef_state not in seen:
+                seen.append(bef_state)
+
+            if (aft_state not in seen):
+                seen.append(aft_state)
+
+        for i in seen:
+            print(i, end=" ")
+        print()
+
+    def print_input_symbol_from_delta(self):
+        seen = []
+        for tf in self.delta:
+            inp = tf.input_symbol
+
+            if inp not in seen:
+                seen.append(inp)
+
+        for i in seen:
+            print(i, end=" ")
+        print()
+
+    def print_stack_symbol_from_delta(self):
+        seen = []
+        for tf in self.delta:
+            stack_before = tf.top_before
+
+            if stack_before not in seen:
+                seen.append(stack_before)
+
+        for i in seen:
+            print(i, end=" ")
+        print()
 
 
 # pathPDA = "config.txt"
