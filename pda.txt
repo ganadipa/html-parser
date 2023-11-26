@@ -464,9 +464,11 @@ BUTTON ' <type=> BUTTON <type'>
 BUTTON % <"> BUTTON <">
 BUTTON submit <type"> BUTTON <type">
 BUTTON reset <type"> BUTTON <type">
+BUTTON button <type"> BUTTON <type">
 BUTTON % <'> BUTTON <'>
 BUTTON submit <type'> BUTTON <type'>
 BUTTON reset <type'> BUTTON <type'>
+BUTTON button <type'> BUTTON <type'>
 
 
 BUTTON " <"> BUTTON <e>
